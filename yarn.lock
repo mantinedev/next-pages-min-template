@@ -227,50 +227,50 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@mantine/core@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-5.0.3.tgz#20c5b3ee24a54d052ad775d09fd2178463c4d8f2"
-  integrity sha512-FUcZBaxEqssbFck3hy+xP0zYAaL3hVjKCsYFZ3LZMK6lm3amWTBV6RLBIQEfMh3zSu6/qXhaj4CqCGf52EL5TA==
+"@mantine/core@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-5.1.0.tgz#9f41c6862ea5c03001c62b34bdc745999a1c07c7"
+  integrity sha512-qTIYbQxuxmkDbPYrYJ9c8J06XaS3tNc3iq+bcWXpnA1FQDM3rXnfydENA53afDjDly6U3ytXLE4nupM1jttBxw==
   dependencies:
     "@floating-ui/react-dom-interactions" "0.6.6"
-    "@mantine/styles" "5.0.3"
-    "@mantine/utils" "5.0.3"
+    "@mantine/styles" "5.1.0"
+    "@mantine/utils" "5.1.0"
     "@radix-ui/react-scroll-area" "1.0.0"
     react-textarea-autosize "8.3.4"
 
-"@mantine/hooks@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-5.0.3.tgz#55fd0658116874294b766505ba7696f95fe5562a"
-  integrity sha512-DdbxUQEv+kGYmbVNRS+pU4MVxOzTKrLPeepJ52L9MfstbpFfafw1Mbyxm4fTDyDGzJUtTWLPER6NZRLmm8kilw==
+"@mantine/hooks@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-5.1.0.tgz#4877c6baf770d7873c8ca179fe85748344aaf48d"
+  integrity sha512-CqG2qYQmjBpWa1vikl3yJKEYW061aa0VEgeRREnKrvQQjWHSl8ZoO6GmU5RSst85kKgN6Y4/JMAU9KdfAl2TrQ==
 
-"@mantine/next@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@mantine/next/-/next-5.0.3.tgz#f2236677384817a5222f8ff647281cdcf8bf25f8"
-  integrity sha512-4bdFJ8nz+pVW0Lks5oZOYP9PsRyFhunBduZzil//ixqKNFHHVBrTxYhCbmEZ7TjFrDqtlU1/dj1oWb73xnCNzQ==
+"@mantine/next@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@mantine/next/-/next-5.1.0.tgz#8abef11d4a963e902a5f1a1d4dcb690ace271b6e"
+  integrity sha512-sqs3tiNxee87UofjxvqrFwu7qqEs6QIi2KZMPLHZ7WPmf2BuMKh2Xr7i0n0TAK21QgX6ZCMZ1mo4SS0gzxVxbQ==
   dependencies:
-    "@mantine/ssr" "5.0.3"
-    "@mantine/styles" "5.0.3"
+    "@mantine/ssr" "5.1.0"
+    "@mantine/styles" "5.1.0"
 
-"@mantine/ssr@5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@mantine/ssr/-/ssr-5.0.3.tgz#84c41fb60296c74a59b088dd42af1bd9c9769429"
-  integrity sha512-+MXvZNCb8IA2ZDH5wttAouOYAezyi9sMxE+Gwr2QVEgwYW5iAnfIIKp7IzgPvduOr6GK49jo2W/7wFpAfj8abA==
+"@mantine/ssr@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@mantine/ssr/-/ssr-5.1.0.tgz#328bba1b44a08e6917ad72410a0334094fd92efd"
+  integrity sha512-ZpB+X5XJpONstwzIwSthVng15tnwP265hAUuZ0n45R//iZGQGPn18Yn8H/W3CVJMBX1VesUXlvKPTG1LY1k76Q==
   dependencies:
-    "@mantine/styles" "5.0.3"
+    "@mantine/styles" "5.1.0"
     html-react-parser "1.4.12"
 
-"@mantine/styles@5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@mantine/styles/-/styles-5.0.3.tgz#0caabd4e607c219eadf7229e3a47fff22d4880cc"
-  integrity sha512-jeyNigJCctBzdiELK7YsE2khyAYj/SkIFMxjUQzzZC54O+leFGpukHefVOORaIelTzs9q9SwmQAxI2qpMcu5+Q==
+"@mantine/styles@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@mantine/styles/-/styles-5.1.0.tgz#7930f1fc90acc4395e3e910a4b44db1dfdcde7ff"
+  integrity sha512-/Bn2d1V181hbPR0dbNjCnL9paIWw/TUQ+an7Hu1PCOsKbtEwN2Ar5I6M3e4ZuKC7AbKdlqYx53pN0n19ENFsqQ==
   dependencies:
     clsx "1.1.1"
     csstype "3.0.9"
 
-"@mantine/utils@5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-5.0.3.tgz#6d878169644b015cee921ada2af4ebe32341c3af"
-  integrity sha512-WZRHF7A2YQhalYwMqkS1hyjK8tu639EQDJxaaptBHQvsAilNS4qD2PD87Cz7np1XhI87SEj5a0U4crzT1jTdDg==
+"@mantine/utils@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-5.1.0.tgz#82944a1390e1a13c50d111ba4024ab883c3f3fba"
+  integrity sha512-rQamOcZxKiBK9M/2/qJ5pvlKVMJ6Te6RiqKMV8NbkS3HSiFt2QrJbR7bTvA4IQQMgWslLdL9TgjPeTkUbYAVKw==
 
 "@next/env@12.2.4":
   version "12.2.4"
