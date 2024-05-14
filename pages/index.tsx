@@ -1,9 +1,31 @@
-import { Button, Group } from "@mantine/core";
+import { Box } from "@mantine/core";
+import { CSSProperties } from "@mantine/emotion";
 
-export default function IndexPage() {
+function Demo({ styles: styles }: { styles: CSSProperties }) {
   return (
-    <Group mt={50} justify="center">
-      <Button size="xl">Welcome to Mantine!</Button>
-    </Group>
+    <Box
+      sx={(theme) => ({
+        padding: 40,
+        ...styles,
+      })}
+    >
+      Box with emotion sx prop
+    </Box>
   );
 }
+
+export default function IndexPage(props: { styles: CSSProperties }) {
+  return <Demo styles={props.styles} />;
+}
+
+IndexPage.getInitialProps = async () => {
+  const styles = {
+    backgroundColor: "#e0e0e0",
+    color: "#333",
+    "&:hover": {
+      backgroundColor: "#bdbdbd",
+    },
+  };
+
+  return { styles };
+};
