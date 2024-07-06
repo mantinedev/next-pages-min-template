@@ -7,6 +7,7 @@ import { FooterLinks } from "../lib/FooterLinks/FooterLinks";
 import { useEffect, useRef } from 'react';
 import { DynamicContextProvider, DynamicWidget } from '@dynamic-labs/sdk-react-core';
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { Notifications } from '@mantine/notifications';
 import '../public/overrides.css'
 
 const theme = createTheme({
@@ -96,6 +97,7 @@ export default function App({ Component, pageProps }: any) {
     </Container>
       <FooterLinks />
       </DynamicContextProvider>
+      <Notifications />
     </MantineProvider>
   );
 }
