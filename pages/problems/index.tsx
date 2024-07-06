@@ -1,10 +1,14 @@
 import React from 'react';
 import { Card, Table, Container, Title, Text, Divider, Button } from '@mantine/core';
 import { TableReviews } from '../../lib/TableReviews/TableReviews';
-import { IconUpload } from '@tabler/icons-react';
 import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
+import { AddProblem } from '../../components/AddProblem';
+import { useApiProblemsList } from '../../api/endpoints/api/api'
 
 const Problems: React.FC = () => {
+    const [counter, setCounter] = React.useState(0);
+    const {data: services, error, isLoading, refetch} = useApiProblemsList({format: 'json', counter: counter}); 
+
     const problems = [
         { id: 1, name: 'Overfitting' },
         { id: 2, name: 'Underfitting' },
@@ -22,10 +26,10 @@ const Problems: React.FC = () => {
             ml="lg"
             variant="gradient"
             gradient={{ from: '#FFFFFF', to: '#FFFFFF' }}>Problem sets & Training data</Text></Title>
-            <Button justify="center"  radius={'xl'} rightSection={<IconUpload size={20}/>} style={{maxWidth: 300, margin: 'auto'}} variant="outline" mt="lg" mb='sm'>Submit a problem and/or data set</Button>
+            <AddProblem refetchParent={() => setCounter(counter+1)}/>
             <Divider my="lg" variant="dashed" labelPosition="center" label={''}/>
 
-            <TableReviews/>
+            <TableReviews services={services} isLoading={isLoading} />
             </Card>      
             </Container>
     );

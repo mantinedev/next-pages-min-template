@@ -14,4 +14,5 @@ export interface Problem {
   readonly id: number;
   /** @maxLength 255 */
   name: string;
+  readonly total_models: string;
 }

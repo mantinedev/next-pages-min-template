@@ -7,6 +7,9 @@
  */
 
 export * from './aIModel';
+export * from './apiAimodelsListParams';
+export * from './apiProblemsListParams';
+export * from './apiTypesListParams';
 export * from './patchedAIModel';
 export * from './patchedProblem';
 export * from './patchedType';

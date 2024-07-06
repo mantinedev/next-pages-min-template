@@ -8,6 +8,9 @@ import { useEffect, useRef } from 'react';
 import { DynamicContextProvider, DynamicWidget } from '@dynamic-labs/sdk-react-core';
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 import { Notifications } from '@mantine/notifications';
+import { ModalsProvider } from '@mantine/modals';
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import '@mantine/notifications/styles.css';
 import '../public/overrides.css'
 
 const theme = createTheme({
@@ -71,7 +74,17 @@ export default function App({ Component, pageProps }: any) {
   }, []);
 
   return (
+    <QueryClientProvider client={new QueryClient({
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false,
+          retry: false,
+        },
+      },
+    })}>
+
     <MantineProvider theme={theme} forceColorScheme="dark">
+      <ModalsProvider>
       <Head>
         <title>Octagon AI - Where your AI project lives.</title>
         <meta
@@ -89,7 +102,7 @@ export default function App({ Component, pageProps }: any) {
 
       <HeaderMegaMenu  />
       <Container fluid>
-        <div ref={vantaRef} style={{ width: '100%', height: '90vh', position: 'relative', display: 'flex' }}>
+        <div ref={vantaRef} style={{ width: '100%', height: '90vh', position: 'relative', display: 'flex', overflow: 'scroll' }}>
           <div style={{position: 'absolute', width: '100%', height: '100%', display: 'flex', justifyContent: 'center'}}>
             <Component {...pageProps} />
           </div>
@@ -98,6 +111,8 @@ export default function App({ Component, pageProps }: any) {
       <FooterLinks />
       </DynamicContextProvider>
       <Notifications />
+      </ModalsProvider>
     </MantineProvider>
+    </QueryClientProvider>
   );
 }

@@ -20,6 +20,9 @@ import type {
 } from '@tanstack/react-query'
 import type {
   AIModel,
+  ApiAimodelsListParams,
+  ApiProblemsListParams,
+  ApiTypesListParams,
   PatchedAIModel,
   PatchedProblem,
   PatchedType,
@@ -59,33 +62,34 @@ type NonReadonly<T> = [T] extends [UnionToIntersection<T>] ? {
 
 
 export const apiAimodelsList = (
-    
+    params?: ApiAimodelsListParams,
  signal?: AbortSignal
 ) => {
       
       
       return customInstance<AIModel[]>(
-      {url: `/api/aimodels/`, method: 'GET', signal
+      {url: `/api/aimodels/`, method: 'GET',
+        params, signal
     },
       );
     }
   
 
-export const getApiAimodelsListQueryKey = () => {
-    return [`/api/aimodels/`] as const;
+export const getApiAimodelsListQueryKey = (params?: ApiAimodelsListParams,) => {
+    return [`/api/aimodels/`, ...(params ? [params]: [])] as const;
     }
 
     
-export const getApiAimodelsListQueryOptions = <TData = Awaited<ReturnType<typeof apiAimodelsList>>, TError = ErrorType<unknown>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiAimodelsList>>, TError, TData>>, }
+export const getApiAimodelsListQueryOptions = <TData = Awaited<ReturnType<typeof apiAimodelsList>>, TError = ErrorType<unknown>>(params?: ApiAimodelsListParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiAimodelsList>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getApiAimodelsListQueryKey();
+  const queryKey =  queryOptions?.queryKey ?? getApiAimodelsListQueryKey(params);
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof apiAimodelsList>>> = ({ signal }) => apiAimodelsList(signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof apiAimodelsList>>> = ({ signal }) => apiAimodelsList(params, signal);
 
       
 
@@ -98,11 +102,11 @@ export type ApiAimodelsListQueryResult = NonNullable<Awaited<ReturnType<typeof a
 export type ApiAimodelsListQueryError = ErrorType<unknown>
 
 export const useApiAimodelsList = <TData = Awaited<ReturnType<typeof apiAimodelsList>>, TError = ErrorType<unknown>>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiAimodelsList>>, TError, TData>>, }
+ params?: ApiAimodelsListParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiAimodelsList>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
-  const queryOptions = getApiAimodelsListQueryOptions(options)
+  const queryOptions = getApiAimodelsListQueryOptions(params,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 
@@ -373,33 +377,34 @@ const {mutation: mutationOptions} = options ?? {};
       return useMutation(mutationOptions);
     }
     export const apiProblemsList = (
-    
+    params?: ApiProblemsListParams,
  signal?: AbortSignal
 ) => {
       
       
       return customInstance<Problem[]>(
-      {url: `/api/problems/`, method: 'GET', signal
+      {url: `/api/problems/`, method: 'GET',
+        params, signal
     },
       );
     }
   
 
-export const getApiProblemsListQueryKey = () => {
-    return [`/api/problems/`] as const;
+export const getApiProblemsListQueryKey = (params?: ApiProblemsListParams,) => {
+    return [`/api/problems/`, ...(params ? [params]: [])] as const;
     }
 
     
-export const getApiProblemsListQueryOptions = <TData = Awaited<ReturnType<typeof apiProblemsList>>, TError = ErrorType<unknown>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiProblemsList>>, TError, TData>>, }
+export const getApiProblemsListQueryOptions = <TData = Awaited<ReturnType<typeof apiProblemsList>>, TError = ErrorType<unknown>>(params?: ApiProblemsListParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiProblemsList>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getApiProblemsListQueryKey();
+  const queryKey =  queryOptions?.queryKey ?? getApiProblemsListQueryKey(params);
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof apiProblemsList>>> = ({ signal }) => apiProblemsList(signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof apiProblemsList>>> = ({ signal }) => apiProblemsList(params, signal);
 
       
 
@@ -412,11 +417,11 @@ export type ApiProblemsListQueryResult = NonNullable<Awaited<ReturnType<typeof a
 export type ApiProblemsListQueryError = ErrorType<unknown>
 
 export const useApiProblemsList = <TData = Awaited<ReturnType<typeof apiProblemsList>>, TError = ErrorType<unknown>>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiProblemsList>>, TError, TData>>, }
+ params?: ApiProblemsListParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiProblemsList>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
-  const queryOptions = getApiProblemsListQueryOptions(options)
+  const queryOptions = getApiProblemsListQueryOptions(params,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 
@@ -687,33 +692,34 @@ const {mutation: mutationOptions} = options ?? {};
       return useMutation(mutationOptions);
     }
     export const apiTypesList = (
-    
+    params?: ApiTypesListParams,
  signal?: AbortSignal
 ) => {
       
       
       return customInstance<Type[]>(
-      {url: `/api/types/`, method: 'GET', signal
+      {url: `/api/types/`, method: 'GET',
+        params, signal
     },
       );
     }
   
 
-export const getApiTypesListQueryKey = () => {
-    return [`/api/types/`] as const;
+export const getApiTypesListQueryKey = (params?: ApiTypesListParams,) => {
+    return [`/api/types/`, ...(params ? [params]: [])] as const;
     }
 
     
-export const getApiTypesListQueryOptions = <TData = Awaited<ReturnType<typeof apiTypesList>>, TError = ErrorType<unknown>>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiTypesList>>, TError, TData>>, }
+export const getApiTypesListQueryOptions = <TData = Awaited<ReturnType<typeof apiTypesList>>, TError = ErrorType<unknown>>(params?: ApiTypesListParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiTypesList>>, TError, TData>>, }
 ) => {
 
 const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getApiTypesListQueryKey();
+  const queryKey =  queryOptions?.queryKey ?? getApiTypesListQueryKey(params);
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof apiTypesList>>> = ({ signal }) => apiTypesList(signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof apiTypesList>>> = ({ signal }) => apiTypesList(params, signal);
 
       
 
@@ -726,11 +732,11 @@ export type ApiTypesListQueryResult = NonNullable<Awaited<ReturnType<typeof apiT
 export type ApiTypesListQueryError = ErrorType<unknown>
 
 export const useApiTypesList = <TData = Awaited<ReturnType<typeof apiTypesList>>, TError = ErrorType<unknown>>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiTypesList>>, TError, TData>>, }
+ params?: ApiTypesListParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof apiTypesList>>, TError, TData>>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
-  const queryOptions = getApiTypesListQueryOptions(options)
+  const queryOptions = getApiTypesListQueryOptions(params,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

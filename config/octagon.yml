@@ -7,6 +7,27 @@ paths:
   /api/aimodels/:
     get:
       operationId: api_aimodels_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: problem
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: type
+        schema:
+          type: integer
       tags:
       - api
       security:
@@ -160,6 +181,19 @@ paths:
   /api/problems/:
     get:
       operationId: api_problems_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -313,6 +347,19 @@ paths:
   /api/types/:
     get:
       operationId: api_types_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
       tags:
       - api
       security:
@@ -554,6 +601,9 @@ components:
         best_accuracy:
           type: string
           readOnly: true
+        total_models:
+          type: string
+          readOnly: true
         name:
           type: string
           maxLength: 255
@@ -582,6 +632,9 @@ components:
         best_accuracy:
           type: string
           readOnly: true
+        total_models:
+          type: string
+          readOnly: true
         name:
           type: string
           maxLength: 255
@@ -596,6 +649,7 @@ components:
       - description
       - id
       - name
+      - total_models
     Type:
       type: object
       properties:
