@@ -1,7 +1,9 @@
-import { Text, Container, ActionIcon, Group, rem } from '@mantine/core';
+import { Text, Container, ActionIcon, Group, rem, Title } from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './FooterLinks.module.css';
+import Logo from '../../public/log.svg';
+import Image from 'next/image';
 
 const data = [
   {
@@ -59,16 +61,29 @@ export function FooterLinks() {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <MantineLogo size={30} />
+        <Title mb='10' order={1} style={{fontWeight: 900, fontSize: '1.5rem', textAlign: 'center', display: 'flex', justifyContent: 'center'}}>
+                <Image src={Logo} alt="Logo" width={28} />
+                <Text
+                component="span"
+                inherit
+                ml={5}
+                variant="gradient"
+                gradient={{ from: '#E22732', to: '#FFFFFF' }}
+                
+              >
+                Octagon AI
+              </Text>
+
+              </Title>
           <Text size="xs" c="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+            Where your AI project lives.
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-          © 2020 mantine.dev. All rights reserved.
+          © 2024 Octagon AI. All rights reserved.
         </Text>
 
         <Group gap={0} className={classes.social} justify="flex-end" wrap="nowrap">

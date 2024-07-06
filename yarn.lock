@@ -163,6 +163,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/carousel@npm:^7.11.1":
+  version: 7.11.1
+  resolution: "@mantine/carousel@npm:7.11.1"
+  peerDependencies:
+    "@mantine/core": 7.11.1
+    "@mantine/hooks": 7.11.1
+    embla-carousel-react: ">=7.0.0"
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10c0/add4b28d2316fc882bc0f7774c37403c406cdd4adbe5e0f3da44ff7b79aceacb2e03f34e9d9f8cf4b88fb292ba9cf782b1be77d47da8aeac2f10281d34e0fbff
+  languageName: node
+  linkType: hard
+
 "@mantine/core@npm:7.11.1":
   version: 7.11.1
   resolution: "@mantine/core@npm:7.11.1"
@@ -181,12 +194,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/form@npm:^7.11.1":
+  version: 7.11.1
+  resolution: "@mantine/form@npm:7.11.1"
+  dependencies:
+    fast-deep-equal: "npm:^3.1.3"
+    klona: "npm:^2.0.6"
+  peerDependencies:
+    react: ^18.2.0
+  checksum: 10c0/4c470f36f9078490f7d8145721fc969821dea3e4ba697f3cee41d04774e6ac5d5b84442616fb3021dee04e9b03f4a88145b06378ba04a2388156be7016de6020
+  languageName: node
+  linkType: hard
+
 "@mantine/hooks@npm:7.11.1":
   version: 7.11.1
   resolution: "@mantine/hooks@npm:7.11.1"
   peerDependencies:
     react: ^18.2.0
   checksum: 10c0/e21ed0b67f160d2500819b515bd61f741220019d780afefe59bdab69de0cf6db839920b5673f4dfe17fbd2598d8ed14b5deea11ce97af9bf06b42ce433b43226
+  languageName: node
+  linkType: hard
+
+"@mantinex/dev-icons@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@mantinex/dev-icons@npm:1.0.2"
+  peerDependencies:
+    "@mantine/core": ">=7.0.0"
+    "@mantine/hooks": ">=7.0.0"
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10c0/21c69b832e6215ca79a9ada4bc21558fe197cefb65604c4bbc54bf775c81696ec62a44978d3c5062b78a31f7ceafa1d3f18413aac4d6a12deb761b896c6e88fa
   languageName: node
   linkType: hard
 
@@ -2414,6 +2451,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"klona@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "klona@npm:2.0.6"
+  checksum: 10c0/94eed2c6c2ce99f409df9186a96340558897b3e62a85afdc1ee39103954d2ebe1c1c4e9fe2b0952771771fa96d70055ede8b27962a7021406374fdb695fd4d01
+  languageName: node
+  linkType: hard
+
 "language-subtag-registry@npm:^0.3.20":
   version: 0.3.22
   resolution: "language-subtag-registry@npm:0.3.22"
@@ -2487,8 +2531,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mantine-minimal-next-template@workspace:."
   dependencies:
+    "@mantine/carousel": "npm:^7.11.1"
     "@mantine/core": "npm:7.11.1"
+    "@mantine/form": "npm:^7.11.1"
     "@mantine/hooks": "npm:7.11.1"
+    "@mantinex/dev-icons": "npm:^1.0.2"
     "@mantinex/mantine-logo": "npm:^1.0.1"
     "@tabler/icons-react": "npm:^3.9.0"
     "@types/node": "npm:20.14.8"
