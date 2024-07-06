@@ -46,23 +46,19 @@ export default function IndexPage() {
 
                 <Title mb='10' order={1} style={{fontWeight: 900, fontSize: '5rem', textAlign: 'center', display: 'flex', justifyContent: 'center'}}>
                 <Image src={Logo} alt="Logo" width={100} />
-
-            <Text
+                <Text
                 component="span"
                 inherit
-                ml={25}
+                ml="lg"
                 variant="gradient"
-                gradient={{ from: '#e7515a', to: '#FFFFFF' }}
+                gradient={{ from: '#FFFFFF', to: '#E22732' }}
                 
               >
                 Octagon AI
               </Text>
-            </Title>
-            <Text>
+
+              </Title>
             <Text size="lg" style={{color: 'white', textAlign: 'center', minWidth: 600}}>We are a team of developers, designers and engineers that are passionate about technology and innovation. We are committed to creating a better world through the use of technology.</Text>
-
-            </Text>
-
                   </Card>      
             </div>
             </Group>

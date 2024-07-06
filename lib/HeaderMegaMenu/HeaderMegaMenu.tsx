@@ -96,12 +96,11 @@ export function HeaderMegaMenu() {
         <Group justify="space-between" h="100%">
           <div style={{display: 'flex'}}>
           <Image src={Logo} alt="Logo" width={40} height={40} />
-          <Text                 variant="gradient" style={{alignContent: 'space-evenly'}}
-                gradient={{ from: '#E22732', to: '#FFFFFF' }}
->          <Title ml={15} order={2}  style={{ fontWeight: 900, textAlign: 'right'}}>Octagon AI</Title>
-
-            
+          <Title ml={10} order={2}  style={{ fontWeight: 900, textAlign: 'right', alignContent: 'space-evenly', fontSize: '1.5rem'}}>
+          <Text inherit variant="gradient" gradient={{ from: '#E22732', to: '#FFFFFF', }} size='inherit'> 
+                Octagon AI
           </Text>
+          </Title>
           </div>
           <Group h="100%" gap={0} visibleFrom="sm">
             <a href="#" className={classes.link}>

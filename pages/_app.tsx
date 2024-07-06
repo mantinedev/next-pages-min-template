@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }: any) {
         <link rel="shortcut icon" href="/favicon.svg" />
       </Head>
       <HeaderMegaMenu  />
-      <Component id='megaBackground' {...pageProps} />
+      <Component {...pageProps} />
       <FooterLinks />
     </MantineProvider>
   );
