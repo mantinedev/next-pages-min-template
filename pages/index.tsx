@@ -1,6 +1,8 @@
 import { Button, Group, Container, Text, Title, Card } from "@mantine/core";
 import { relative } from "path";
 import { useEffect, useRef } from 'react';
+import Logo from '../public/log.svg';
+import Image from 'next/image';
 
 export default function IndexPage() {
   const vantaRef = useRef(null);
@@ -41,20 +43,14 @@ export default function IndexPage() {
             <Group mt={0} justify="center">
               <div style={{maxWidth: '50%'}} >     
                 <Card shadow="sm" padding="xl" radius="xl" withBorder style={{backgroundColor: '#2e2e2eAA'}}>
-                <Title mb='10' order={1} style={{fontWeight: 900, fontSize: '5rem', textAlign: 'center'}}>
-            <Text
-                component="span"
-                inherit
-                
-                variant="gradient"
-                gradient={{ from: '#FFFFFF', to: '#E22732' }}
-                
-              >
-                Octagon AI
-              </Text>
+
+                <Title mb='10' order={1} style={{fontWeight: 900, fontSize: '5rem', textAlign: 'center', display: 'flex', justifyContent: 'center'}}>
+                <Image src={Logo} alt="Logo" width={100} />
+
             </Title>
             <Text>
-              <Text size="lg" style={{color: 'white', textAlign: 'center'}}>We are a team of developers, designers and engineers that are passionate about technology and innovation. We are committed to creating a better world through the use of technology.</Text>
+            <Text size="lg" style={{color: 'white', textAlign: 'center', minWidth: 600}}>We are a team of developers, designers and engineers that are passionate about technology and innovation. We are committed to creating a better world through the use of technology.</Text>
+
             </Text>
 
                   </Card>      

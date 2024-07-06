@@ -16,8 +16,10 @@ import {
   ScrollArea,
   rem,
   useMantineTheme,
+  Title,
 } from '@mantine/core';
 import { MantineLogo } from '@mantinex/mantine-logo';
+import Image from 'next/image';
 import { useDisclosure } from '@mantine/hooks';
 import {
   IconNotification,
@@ -29,6 +31,8 @@ import {
   IconChevronDown,
 } from '@tabler/icons-react';
 import classes from './HeaderMegaMenu.module.css';
+import { IconOctagon, IconOctagonFilled, IconOctagonMinus, IconOctagonMinus2 } from '@tabler/icons-react';
+import Logo from '../../public/log.svg';
 
 const mockdata = [
   {
@@ -90,8 +94,15 @@ export function HeaderMegaMenu() {
     <Box pb={0}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-          <MantineLogo size={30} />
+          <div style={{display: 'flex'}}>
+          <Image src={Logo} alt="Logo" width={40} height={40} />
+          <Text                 variant="gradient" style={{alignContent: 'space-evenly'}}
+                gradient={{ from: '#E22732', to: '#FFFFFF' }}
+>          <Title ml={15} order={2}  style={{ fontWeight: 900, textAlign: 'right'}}>Octagon AI</Title>
 
+            
+          </Text>
+          </div>
           <Group h="100%" gap={0} visibleFrom="sm">
             <a href="#" className={classes.link}>
               Home
