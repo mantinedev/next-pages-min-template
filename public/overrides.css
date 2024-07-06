@@ -5,7 +5,10 @@
     --dynamic-connect-button-background-hover: #e64f57DD;
     --dynamic-connect-button-padding-height: 5px;
     --dynamic-connect-button-padding-width: 5px;
-  
+    --dynamic-connect-button-border: none;
+    --dynamic-connect-button-color: #fff;
+    --dynamic-font-family-primary: "Open Sans", sans-serif;
+
 
 }
   

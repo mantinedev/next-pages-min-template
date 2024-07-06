@@ -25,7 +25,7 @@ const Problems: React.FC = () => {
             <Button justify="center"  radius={'xl'} rightSection={<IconUpload size={20}/>} style={{maxWidth: 300, margin: 'auto'}} variant="outline" mt="lg" mb='sm'>Submit a problem and/or data set</Button>
             <Divider my="lg" variant="dashed" labelPosition="center" label={''}/>
 
-            <TableReviews/>
+            <div className="nvm-agent-widget" nvm-did="did:nv:78f68740c70947a02e79a0d360a157c1847638c953d473d43e5a242dfe03aa14" nvm-wid="wid-eb0c3740-bcbb-410e-885a-ea0a1e2c785e" nvm-theme="dark" nvm-layout="vertical"></div>
             </Card>      
             </Container>
     );
