@@ -31,6 +31,13 @@ const theme = createTheme({
 
 export default function App({ Component, pageProps }: any) {
 
+  const cssOverrides = `
+  .button--padding-large {
+    padding: 0.66rem 1rem;
+  }
+`
+
+
   const vantaRef = useRef(null);
 
   useEffect(() => {
@@ -76,6 +83,7 @@ export default function App({ Component, pageProps }: any) {
           settings={{
             environmentId: 'a2dea8be-028b-4848-a65f-a57fe56a8770',
             walletConnectors: [ EthereumWalletConnectors ],
+            cssOverrides: cssOverrides,
           }}>
 
       <HeaderMegaMenu  />

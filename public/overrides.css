@@ -1,10 +1,11 @@
 .dynamic-shadow-dom {
     --dynamic-connect-button-background: #e64f57;
-    --dynamic-border-radius: 2rem;
+    --dynamic-border-radius: 1.5rem;
     --dynamic-modal-padding: 0.5rem;
-}
+    --dynamic-connect-button-background-hover: #e64f57DD;
+    --dynamic-connect-button-padding-height: 5px;
+    --dynamic-connect-button-padding-width: 5px;
+  
 
-.button--padding-large{
-    padding: .378rem 0.625rem !important;
 }
   
