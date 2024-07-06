@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Table, Container, Title, Text, Divider, Button } from '@mantine/core';
 import { TableReviews } from '../../lib/TableReviews/TableReviews';
 import { IconUpload } from '@tabler/icons-react';
+import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
 
 const Problems: React.FC = () => {
     const problems = [
@@ -20,7 +21,7 @@ const Problems: React.FC = () => {
             inherit
             ml="lg"
             variant="gradient"
-            gradient={{ from: '#FFFFFF', to: '#FFFFFF' }}>Problem Sets & Training Data</Text></Title>
+            gradient={{ from: '#FFFFFF', to: '#FFFFFF' }}>Problem sets & Training data</Text></Title>
             <Button justify="center"  radius={'xl'} rightSection={<IconUpload size={20}/>} style={{maxWidth: 300, margin: 'auto'}} variant="outline" mt="lg" mb='sm'>Submit a problem and/or data set</Button>
             <Divider my="lg" variant="dashed" labelPosition="center" label={''}/>
 

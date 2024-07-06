@@ -33,6 +33,7 @@ import {
 import classes from './HeaderMegaMenu.module.css';
 import { IconOctagon, IconOctagonFilled, IconOctagonMinus, IconOctagonMinus2 } from '@tabler/icons-react';
 import Logo from '../../public/log.svg';
+import { DynamicContextProvider, DynamicWidget } from '@dynamic-labs/sdk-react-core';
 
 const mockdata = [
   {
@@ -115,8 +116,8 @@ export function HeaderMegaMenu() {
           </Group>
 
           <Group visibleFrom="sm">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <DynamicWidget />
+
           </Group>
 
           <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />

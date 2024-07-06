@@ -1,0 +1,10 @@
+.dynamic-shadow-dom {
+    --dynamic-connect-button-background: #e64f57;
+    --dynamic-border-radius: 2rem;
+    --dynamic-modal-padding: 0.5rem;
+}
+
+.button--padding-large{
+    padding: .378rem 0.625rem !important;
+}
+  

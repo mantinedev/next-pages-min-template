@@ -5,6 +5,9 @@ import { HeaderMegaMenu } from "../lib/HeaderMegaMenu/HeaderMegaMenu";
 import { MantineProvider, createTheme, MantineColorsTuple, Button, useMantineTheme, Container } from '@mantine/core';
 import { FooterLinks } from "../lib/FooterLinks/FooterLinks";
 import { useEffect, useRef } from 'react';
+import { DynamicContextProvider, DynamicWidget } from '@dynamic-labs/sdk-react-core';
+import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import '../public/overrides.css'
 
 const theme = createTheme({
   fontFamily: 'Open Sans, sans-serif',
@@ -62,13 +65,19 @@ export default function App({ Component, pageProps }: any) {
   return (
     <MantineProvider theme={theme} forceColorScheme="dark">
       <Head>
-        <title>Octagon</title>
+        <title>Octagon AI - Where your AI project lives.</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
         <link rel="shortcut icon" href="/favicon.svg" />
       </Head>
+      <DynamicContextProvider
+          settings={{
+            environmentId: 'a2dea8be-028b-4848-a65f-a57fe56a8770',
+            walletConnectors: [ EthereumWalletConnectors ],
+          }}>
+
       <HeaderMegaMenu  />
       <Container fluid>
         <div ref={vantaRef} style={{ width: '100%', height: '90vh', position: 'relative', display: 'flex' }}>
@@ -78,6 +87,7 @@ export default function App({ Component, pageProps }: any) {
         </div>
     </Container>
       <FooterLinks />
+      </DynamicContextProvider>
     </MantineProvider>
   );
 }

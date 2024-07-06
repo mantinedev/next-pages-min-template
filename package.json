@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dynamic-labs/ethereum": "^2.2.10",
+    "@dynamic-labs/sdk-react-core": "^2.2.10",
     "@mantine/carousel": "^7.11.1",
     "@mantine/core": "7.11.1",
     "@mantine/form": "^7.11.1",
@@ -18,7 +20,8 @@
     "@tabler/icons-react": "^3.9.0",
     "next": "14.2.4",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "viem": "^2.17.2"
   },
   "devDependencies": {
     "@types/node": "20.14.8",
