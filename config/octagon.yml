@@ -502,6 +502,10 @@ components:
           type: string
           format: uri
           nullable: true
+        accuracy:
+          type: number
+          format: double
+          nullable: true
         problem:
           type: integer
           nullable: true
@@ -531,6 +535,10 @@ components:
           type: string
           format: uri
           nullable: true
+        accuracy:
+          type: number
+          format: double
+          nullable: true
         problem:
           type: integer
           nullable: true
@@ -542,6 +550,9 @@ components:
       properties:
         id:
           type: integer
+          readOnly: true
+        best_accuracy:
+          type: string
           readOnly: true
         name:
           type: string
@@ -568,6 +579,9 @@ components:
         id:
           type: integer
           readOnly: true
+        best_accuracy:
+          type: string
+          readOnly: true
         name:
           type: string
           maxLength: 255
@@ -577,6 +591,7 @@ components:
           type: string
           maxLength: 255
       required:
+      - best_accuracy
       - data_url
       - description
       - id

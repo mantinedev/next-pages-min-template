@@ -7,6 +7,7 @@
  */
 
 export interface PatchedProblem {
+  readonly best_accuracy?: string;
   /** @maxLength 255 */
   data_url?: string;
   description?: string;

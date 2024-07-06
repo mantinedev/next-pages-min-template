@@ -7,6 +7,8 @@
  */
 
 export interface AIModel {
+  /** @nullable */
+  accuracy?: number | null;
   description: string;
   /** @nullable */
   file?: string | null;
