@@ -67,7 +67,7 @@ export function TableReviews({services, isLoading}) {
             <Table.Th>Models</Table.Th>
             <Table.Th>Description</Table.Th>
             <Table.Th>Dataset</Table.Th>
-            <Table.Th>Best accuracy</Table.Th>
+            <Table.Th>Mean Absolute Error</Table.Th>
             
           </Table.Tr>
         </Table.Thead>

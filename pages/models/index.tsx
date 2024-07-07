@@ -1,9 +1,13 @@
 import React from 'react';
-import { Card, Table, Container, Title, Text, Divider, Button, Tabs, rem } from '@mantine/core';
+import { Card, Table, Container, Title, Text, Divider, Button, Tabs, rem, Group, Select } from '@mantine/core';
 import { TableReviews } from '../../lib/TableReviews/TableReviews';
 import { IconUpload } from '@tabler/icons-react';
 import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
 import { IconSearch, IconCoins } from '@tabler/icons-react';
+import { AddModel } from '../../components/AddModel';
+import { useApiTypesList } from '../../api/endpoints/api/api';
+import { useApiProblemsList } from '../../api/endpoints/api/api';
+import { useApiAimodelsList } from '../../api/endpoints/api/api';
 
 const Problems: React.FC = () => {
     const problems = [
@@ -13,6 +17,14 @@ const Problems: React.FC = () => {
         { id: 4, name: 'Lack of Interpretability' },
     ];
     const iconStyle = { width: rem(12), height: rem(12) };
+    const { data: problemsData, isLoading: problemsLoading } = useApiProblemsList();
+    const { data: typesData, isLoading: typesLoading } = useApiTypesList();
+    const [selectedProblem, setSelectedProblem] = React.useState({value: '0', label: 'All problems'});
+    const [selectedType, setSelectedType] = React.useState({value: '0', label: 'All types'});
+    const { data: modelsData, isLoading: modelsLoading } = useApiAimodelsList({
+        type: parseInt(selectedType.value) ? parseInt(selectedType.value) :  undefined, 
+        problem: parseInt(selectedProblem.value)? parseInt(selectedProblem.value) : undefined
+    });
 
     return (
         <Container id='abc' style={{width: '100%'}} p='md'>
@@ -24,7 +36,9 @@ const Problems: React.FC = () => {
             ml="lg"
             variant="gradient"
             gradient={{ from: '#FFFFFF', to: '#FFFFFF' }}>Deployed Models</Text></Title>
-            <Button justify="center"  radius={'xl'} rightSection={<IconUpload size={20}/>} style={{maxWidth: 300, margin: 'auto'}} variant="outline" mt="lg" mb='sm'>Deploy your own model</Button>
+            <AddModel refetchParent={() => {}} types={typesData} problems={problemsData}/>
+            <Divider my="lg" variant="dashed" labelPosition="center" label={''}/>
+
             <Tabs defaultValue="search" variant='pills'>
                 <Tabs.List justify="center">
                     <Tabs.Tab value="search" leftSection={<IconSearch style={iconStyle} />}>
@@ -36,7 +50,23 @@ const Problems: React.FC = () => {
                 </Tabs.List>
 
                 <Tabs.Panel value="search">
-                    Gallery tab content
+                <Group mt={15} grow justify='space-between'>
+                <Select 
+                        placeholder='All problems'
+                        data={problemsData?.map((problem) => ({value: problem.id.toString(), label: problem.name}))}
+                        value={selectedProblem ? selectedProblem.value : null}
+                        onChange={(_value, option) => setSelectedProblem(option)}
+                        ></Select>
+                        <Select
+                        placeholder='All types'
+                        data={typesData?.map((type) => ({value: type.id.toString(), label: type.name}))}
+                        value={selectedType ? selectedType.value : null}
+                        onChange={(_value, option) => setSelectedType(option)}
+                        ></Select>
+
+                    </Group>
+                    
+
                 </Tabs.Panel>
 
                 <Tabs.Panel value="buy">
