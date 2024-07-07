@@ -22,6 +22,8 @@ export interface AIModel {
   nevermind_tag?: string | null;
   /** @nullable */
   problem?: number | null;
+  readonly problem_name: string;
   /** @nullable */
   type?: number | null;
+  readonly type_name: string;
 }

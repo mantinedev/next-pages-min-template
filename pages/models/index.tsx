@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Table, Container, Title, Text, Divider, Button, Tabs, rem, Group, Select } from '@mantine/core';
-import { TableReviews } from '../../lib/TableReviews/TableReviews';
+import { TableReviews } from '../../lib/TableReviewsModel/TableReviews';
 import { IconUpload } from '@tabler/icons-react';
 import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
 import { IconSearch, IconCoins } from '@tabler/icons-react';
@@ -66,7 +66,7 @@ const Problems: React.FC = () => {
 
                     </Group>
                     
-
+                    <TableReviews services={modelsData} isLoading={modelsLoading} />
                 </Tabs.Panel>
 
                 <Tabs.Panel value="buy">

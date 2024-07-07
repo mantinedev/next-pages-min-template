@@ -536,6 +536,12 @@ components:
         id:
           type: integer
           readOnly: true
+        problem_name:
+          type: string
+          readOnly: true
+        type_name:
+          type: string
+          readOnly: true
         name:
           type: string
           maxLength: 255
@@ -563,11 +569,19 @@ components:
       - description
       - id
       - name
+      - problem_name
+      - type_name
     PatchedAIModel:
       type: object
       properties:
         id:
           type: integer
+          readOnly: true
+        problem_name:
+          type: string
+          readOnly: true
+        type_name:
+          type: string
           readOnly: true
         name:
           type: string
