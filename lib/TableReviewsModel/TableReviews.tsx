@@ -1,15 +1,30 @@
-import { Table, Progress, Anchor, Text, Group, LoadingOverlay, Button, Badge } from '@mantine/core';
+import { Table, Progress, Anchor, Text, Group, LoadingOverlay, Button, Badge, Tooltip, Modal, TextInput } from '@mantine/core';
 import classes from './TableReviews.module.css';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { apiAimodelsPartialUpdate } from '../../api/endpoints/api/api';
+import { notifications } from '@mantine/notifications';
+import { useDisclosure } from '@mantine/hooks';
+import { useState } from 'react';
+import { useForm } from '@mantine/form';
 
-export function TableReviews({services, isLoading}) {
 
-
+export function TableReviews({services, isLoading, refetchParent}) {
+    const [opened, { open, close }] = useDisclosure(false);
+    const [selectModel, setSelectModel] = useState(0);
+    const [isUpdating, setIsUpdating] = useState(false);
+    const form = useForm({
+    });
+  
     const rows = services?.map((row) => {
     const best_accuracy = parseFloat(row.accuracy) || 0;
     const positiveReviews = (best_accuracy);
     const negativeReviews = (100 - best_accuracy);
+
+    const updateNeverminedTag = ({id, tag}: {id: number, tag: string}) => {
+
+    };
+
 
 
     return (
@@ -22,14 +37,19 @@ export function TableReviews({services, isLoading}) {
         <Table.Td><Link href={'#'}>{row.problem_name}</Link></Table.Td>
         <Table.Td>
           <Anchor component="button" fz="sm">
-            {row.description}
+            <Tooltip label={row.description}>
+              <Text>Hover to read</Text>
+            </Tooltip>
           </Anchor>
         </Table.Td>
         <Table.Td>
           {row.type_name? <Badge color="teal">{row.type_name}</Badge> : ''}
         </Table.Td>
         <Table.Td>
-        {row.nevermind_tag? <Badge ml={5} variant='dot' color="teal">Deployed</Badge> : ''}
+        {row.nevermind_tag? <Badge ml={5} variant='dot' color="teal">Deployed</Badge> : <Button onClick={() => {
+          setSelectModel(row.id);
+          open();
+        }} variant='transparent'>Deploy with Nevermined  </Button>}
         </Table.Td>
         <Table.Td>
           <Group justify="space-between">
@@ -75,6 +95,29 @@ export function TableReviews({services, isLoading}) {
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>
       </Table>
+      <Modal opened={opened} onClose={close} title="Start charging for inference">
+        <LoadingOverlay visible={false} />
+        <form onSubmit={form.onSubmit((values) => {setIsUpdating(true); apiAimodelsPartialUpdate(selectModel, {
+        nevermind_tag: values.tag
+      }).then(() => {
+      
+      close();
+      notifications.show({message: 'Tag updated successfully', color: 'green'});
+      if (refetchParent) refetchParent();
+      }).catch((error: any) => {
+      notifications.show({message: `Tag update failed: ${JSON.stringify(error.response?.data)}`, color: 'red'});
+      })})}>
+          <TextInput
+            withAsterisk
+            label="Nevermined deployment tag"
+            placeholder="nevermined_tag"
+            {...form.getInputProps('tag')}
+          />
+          <Group position="right" mt="lg">
+            <Button type="submit">Publish deployment</Button>
+          </Group>
+        </form>
+      </Modal>
     </Table.ScrollContainer>
   );
 }

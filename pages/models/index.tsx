@@ -32,7 +32,7 @@ const Problems: React.FC = () => {
     const { data: typesData, isLoading: typesLoading } = useApiTypesList();
     const [selectedProblem, setSelectedProblem] = React.useState({value: '0', label: 'All problems'});
     const [selectedType, setSelectedType] = React.useState({value: '0', label: 'All types'});
-    const { data: modelsData, isLoading: modelsLoading } = useApiAimodelsList({
+    const { data: modelsData, isLoading: modelsLoading, refetch } = useApiAimodelsList({
         type: parseInt(selectedType.value) ? parseInt(selectedType.value) :  undefined, 
         problem: parseInt(selectedProblem.value)? parseInt(selectedProblem.value) : undefined
     });
@@ -55,7 +55,7 @@ const Problems: React.FC = () => {
             ml="lg"
             variant="gradient"
             gradient={{ from: '#FFFFFF', to: '#FFFFFF' }}>Deployed Models</Text></Title>
-            <AddModel refetchParent={() => {}} types={typesData} problems={problemsData}/>
+            <AddModel refetchParent={refetch} types={typesData} problems={problemsData}/>
             <Divider my="lg" variant="dashed" labelPosition="center" label={''}/>
 
             <Tabs defaultValue="search" variant='pills'>
