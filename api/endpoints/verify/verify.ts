@@ -13,18 +13,24 @@ import type {
   UseMutationOptions,
   UseMutationResult
 } from '@tanstack/react-query'
+import type {
+  VerifyModel
+} from '../../model'
 import { customInstance } from '../../../services/custom-axios-instance';
-import type { ErrorType } from '../../../services/custom-axios-instance';
+import type { ErrorType, BodyType } from '../../../services/custom-axios-instance';
 
 
 
 export const verifyCreate = (
     id: number,
+    verifyModel: BodyType<VerifyModel>,
  ) => {
       
       
-      return customInstance<void>(
-      {url: `/verify/${id}/`, method: 'POST'
+      return customInstance<VerifyModel>(
+      {url: `/api/verify/${id}`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: verifyModel
     },
       );
     }
@@ -32,17 +38,17 @@ export const verifyCreate = (
 
 
 export const getVerifyCreateMutationOptions = <TError = ErrorType<unknown>,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof verifyCreate>>, TError,{id: number}, TContext>, }
-): UseMutationOptions<Awaited<ReturnType<typeof verifyCreate>>, TError,{id: number}, TContext> => {
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof verifyCreate>>, TError,{id: number;data: BodyType<VerifyModel>}, TContext>, }
+): UseMutationOptions<Awaited<ReturnType<typeof verifyCreate>>, TError,{id: number;data: BodyType<VerifyModel>}, TContext> => {
 const {mutation: mutationOptions} = options ?? {};
 
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof verifyCreate>>, {id: number}> = (props) => {
-          const {id} = props ?? {};
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof verifyCreate>>, {id: number;data: BodyType<VerifyModel>}> = (props) => {
+          const {id,data} = props ?? {};
 
-          return  verifyCreate(id,)
+          return  verifyCreate(id,data,)
         }
 
         
@@ -51,15 +57,15 @@ const {mutation: mutationOptions} = options ?? {};
   return  { mutationFn, ...mutationOptions }}
 
     export type VerifyCreateMutationResult = NonNullable<Awaited<ReturnType<typeof verifyCreate>>>
-    
+    export type VerifyCreateMutationBody = BodyType<VerifyModel>
     export type VerifyCreateMutationError = ErrorType<unknown>
 
     export const useVerifyCreate = <TError = ErrorType<unknown>,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof verifyCreate>>, TError,{id: number}, TContext>, }
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof verifyCreate>>, TError,{id: number;data: BodyType<VerifyModel>}, TContext>, }
 ): UseMutationResult<
         Awaited<ReturnType<typeof verifyCreate>>,
         TError,
-        {id: number},
+        {id: number;data: BodyType<VerifyModel>},
         TContext
       > => {
 

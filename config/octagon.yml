@@ -6,7 +6,7 @@ info:
 paths:
   /api/aimodels/:
     get:
-      operationId: api_aimodels_list
+      operationId: aimodels_list
       parameters:
       - name: ordering
         required: false
@@ -29,7 +29,7 @@ paths:
         schema:
           type: integer
       tags:
-      - api
+      - aimodels
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -44,9 +44,9 @@ paths:
                   $ref: '#/components/schemas/AIModel'
           description: ''
     post:
-      operationId: api_aimodels_create
+      operationId: aimodels_create
       tags:
-      - api
+      - aimodels
       requestBody:
         content:
           application/json:
@@ -72,7 +72,7 @@ paths:
           description: ''
   /api/aimodels/{id}/:
     get:
-      operationId: api_aimodels_retrieve
+      operationId: aimodels_retrieve
       parameters:
       - in: path
         name: id
@@ -81,7 +81,7 @@ paths:
         description: A unique integer value identifying this ai model.
         required: true
       tags:
-      - api
+      - aimodels
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -94,7 +94,7 @@ paths:
                 $ref: '#/components/schemas/AIModel'
           description: ''
     put:
-      operationId: api_aimodels_update
+      operationId: aimodels_update
       parameters:
       - in: path
         name: id
@@ -103,7 +103,7 @@ paths:
         description: A unique integer value identifying this ai model.
         required: true
       tags:
-      - api
+      - aimodels
       requestBody:
         content:
           application/json:
@@ -128,7 +128,7 @@ paths:
                 $ref: '#/components/schemas/AIModel'
           description: ''
     patch:
-      operationId: api_aimodels_partial_update
+      operationId: aimodels_partial_update
       parameters:
       - in: path
         name: id
@@ -137,7 +137,7 @@ paths:
         description: A unique integer value identifying this ai model.
         required: true
       tags:
-      - api
+      - aimodels
       requestBody:
         content:
           application/json:
@@ -161,7 +161,7 @@ paths:
                 $ref: '#/components/schemas/AIModel'
           description: ''
     delete:
-      operationId: api_aimodels_destroy
+      operationId: aimodels_destroy
       parameters:
       - in: path
         name: id
@@ -170,7 +170,7 @@ paths:
         description: A unique integer value identifying this ai model.
         required: true
       tags:
-      - api
+      - aimodels
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -178,9 +178,27 @@ paths:
       responses:
         '204':
           description: No response body
+  /api/evaluate/{id}:
+    post:
+      operationId: evaluate_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - evaluate
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
   /api/problems/:
     get:
-      operationId: api_problems_list
+      operationId: problems_list
       parameters:
       - name: ordering
         required: false
@@ -195,7 +213,7 @@ paths:
         schema:
           type: string
       tags:
-      - api
+      - problems
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -210,9 +228,9 @@ paths:
                   $ref: '#/components/schemas/Problem'
           description: ''
     post:
-      operationId: api_problems_create
+      operationId: problems_create
       tags:
-      - api
+      - problems
       requestBody:
         content:
           application/json:
@@ -238,7 +256,7 @@ paths:
           description: ''
   /api/problems/{id}/:
     get:
-      operationId: api_problems_retrieve
+      operationId: problems_retrieve
       parameters:
       - in: path
         name: id
@@ -247,7 +265,7 @@ paths:
         description: A unique integer value identifying this problem.
         required: true
       tags:
-      - api
+      - problems
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -260,7 +278,7 @@ paths:
                 $ref: '#/components/schemas/Problem'
           description: ''
     put:
-      operationId: api_problems_update
+      operationId: problems_update
       parameters:
       - in: path
         name: id
@@ -269,7 +287,7 @@ paths:
         description: A unique integer value identifying this problem.
         required: true
       tags:
-      - api
+      - problems
       requestBody:
         content:
           application/json:
@@ -294,7 +312,7 @@ paths:
                 $ref: '#/components/schemas/Problem'
           description: ''
     patch:
-      operationId: api_problems_partial_update
+      operationId: problems_partial_update
       parameters:
       - in: path
         name: id
@@ -303,7 +321,7 @@ paths:
         description: A unique integer value identifying this problem.
         required: true
       tags:
-      - api
+      - problems
       requestBody:
         content:
           application/json:
@@ -327,7 +345,7 @@ paths:
                 $ref: '#/components/schemas/Problem'
           description: ''
     delete:
-      operationId: api_problems_destroy
+      operationId: problems_destroy
       parameters:
       - in: path
         name: id
@@ -336,7 +354,7 @@ paths:
         description: A unique integer value identifying this problem.
         required: true
       tags:
-      - api
+      - problems
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -346,7 +364,7 @@ paths:
           description: No response body
   /api/types/:
     get:
-      operationId: api_types_list
+      operationId: types_list
       parameters:
       - name: ordering
         required: false
@@ -361,7 +379,7 @@ paths:
         schema:
           type: string
       tags:
-      - api
+      - types
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -376,9 +394,9 @@ paths:
                   $ref: '#/components/schemas/Type'
           description: ''
     post:
-      operationId: api_types_create
+      operationId: types_create
       tags:
-      - api
+      - types
       requestBody:
         content:
           application/json:
@@ -404,7 +422,7 @@ paths:
           description: ''
   /api/types/{id}/:
     get:
-      operationId: api_types_retrieve
+      operationId: types_retrieve
       parameters:
       - in: path
         name: id
@@ -413,7 +431,7 @@ paths:
         description: A unique integer value identifying this type.
         required: true
       tags:
-      - api
+      - types
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -426,7 +444,7 @@ paths:
                 $ref: '#/components/schemas/Type'
           description: ''
     put:
-      operationId: api_types_update
+      operationId: types_update
       parameters:
       - in: path
         name: id
@@ -435,7 +453,7 @@ paths:
         description: A unique integer value identifying this type.
         required: true
       tags:
-      - api
+      - types
       requestBody:
         content:
           application/json:
@@ -460,7 +478,7 @@ paths:
                 $ref: '#/components/schemas/Type'
           description: ''
     patch:
-      operationId: api_types_partial_update
+      operationId: types_partial_update
       parameters:
       - in: path
         name: id
@@ -469,7 +487,7 @@ paths:
         description: A unique integer value identifying this type.
         required: true
       tags:
-      - api
+      - types
       requestBody:
         content:
           application/json:
@@ -493,7 +511,7 @@ paths:
                 $ref: '#/components/schemas/Type'
           description: ''
     delete:
-      operationId: api_types_destroy
+      operationId: types_destroy
       parameters:
       - in: path
         name: id
@@ -502,7 +520,7 @@ paths:
         description: A unique integer value identifying this type.
         required: true
       tags:
-      - api
+      - types
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -510,7 +528,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /verify/{id}/:
+  /api/verify/{id}:
     post:
       operationId: verify_create
       parameters:
@@ -521,13 +539,29 @@ paths:
         required: true
       tags:
       - verify
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyModel'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VerifyModel'
+        required: true
       security:
       - cookieAuth: []
       - basicAuth: []
       - {}
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyModel'
+          description: ''
 components:
   schemas:
     AIModel:
@@ -679,6 +713,16 @@ components:
       - description
       - id
       - name
+    VerifyModel:
+      type: object
+      properties:
+        x:
+          type: array
+          items:
+            type: number
+            format: double
+      required:
+      - x
   securitySchemes:
     basicAuth:
       type: http

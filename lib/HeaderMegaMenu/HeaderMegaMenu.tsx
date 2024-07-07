@@ -113,6 +113,9 @@ export function HeaderMegaMenu() {
             <a href="/models" className={classes.link}>
               Models
             </a>
+            <a href="/inference" className={classes.link}>
+              Provable inference
+            </a>
           </Group>
 
           <Group visibleFrom="sm">
