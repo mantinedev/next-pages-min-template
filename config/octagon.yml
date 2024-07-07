@@ -1,0 +1,689 @@
+openapi: 3.0.3
+info:
+  title: Octagon AI API
+  version: 1.0.0
+  description: API for Octagon AI's backend services.
+paths:
+  /api/aimodels/:
+    get:
+      operationId: api_aimodels_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: problem
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: type
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIModel'
+          description: ''
+    post:
+      operationId: api_aimodels_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIModel'
+          description: ''
+  /api/aimodels/{id}/:
+    get:
+      operationId: api_aimodels_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ai model.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIModel'
+          description: ''
+    put:
+      operationId: api_aimodels_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ai model.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIModel'
+          description: ''
+    patch:
+      operationId: api_aimodels_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ai model.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAIModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAIModel'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAIModel'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIModel'
+          description: ''
+    delete:
+      operationId: api_aimodels_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ai model.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/problems/:
+    get:
+      operationId: api_problems_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Problem'
+          description: ''
+    post:
+      operationId: api_problems_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Problem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Problem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Problem'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+          description: ''
+  /api/problems/{id}/:
+    get:
+      operationId: api_problems_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this problem.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+          description: ''
+    put:
+      operationId: api_problems_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this problem.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Problem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Problem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Problem'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+          description: ''
+    patch:
+      operationId: api_problems_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this problem.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProblem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProblem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProblem'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+          description: ''
+    delete:
+      operationId: api_problems_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this problem.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/types/:
+    get:
+      operationId: api_types_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Type'
+          description: ''
+    post:
+      operationId: api_types_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Type'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Type'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Type'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Type'
+          description: ''
+  /api/types/{id}/:
+    get:
+      operationId: api_types_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this type.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Type'
+          description: ''
+    put:
+      operationId: api_types_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this type.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Type'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Type'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Type'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Type'
+          description: ''
+    patch:
+      operationId: api_types_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this type.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedType'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedType'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedType'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Type'
+          description: ''
+    delete:
+      operationId: api_types_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this type.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /verify/{id}/:
+    post:
+      operationId: verify_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - verify
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+components:
+  schemas:
+    AIModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        problem_name:
+          type: string
+          readOnly: true
+        type_name:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        nevermind_tag:
+          type: string
+          nullable: true
+          maxLength: 255
+        file:
+          type: string
+          format: uri
+          nullable: true
+        accuracy:
+          type: number
+          format: double
+          nullable: true
+        problem:
+          type: integer
+          nullable: true
+        type:
+          type: integer
+          nullable: true
+      required:
+      - description
+      - id
+      - name
+      - problem_name
+      - type_name
+    PatchedAIModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        problem_name:
+          type: string
+          readOnly: true
+        type_name:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        nevermind_tag:
+          type: string
+          nullable: true
+          maxLength: 255
+        file:
+          type: string
+          format: uri
+          nullable: true
+        accuracy:
+          type: number
+          format: double
+          nullable: true
+        problem:
+          type: integer
+          nullable: true
+        type:
+          type: integer
+          nullable: true
+    PatchedProblem:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        best_accuracy:
+          type: string
+          readOnly: true
+        total_models:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        data_url:
+          type: string
+          maxLength: 255
+    PatchedType:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+    Problem:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        best_accuracy:
+          type: string
+          readOnly: true
+        total_models:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        data_url:
+          type: string
+          maxLength: 255
+      required:
+      - best_accuracy
+      - data_url
+      - description
+      - id
+      - name
+      - total_models
+    Type:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+      required:
+      - description
+      - id
+      - name
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

@@ -6,14 +6,33 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "orval": "curl -o ./config/octagon.yml http://localhost:8000/api/schema/ && orval --config ./orval.config.js",
+    "orval-local": "curl -o ./config/octagon.yml http://localhost:8000/api/schema/ && orval --config ./orval.config.js"
   },
   "dependencies": {
+    "@dynamic-labs/ethereum": "^2.2.10",
+    "@dynamic-labs/ethers-v5": "^2.2.10",
+    "@dynamic-labs/sdk-react-core": "^2.2.10",
+    "@mantine/carousel": "^7.11.1",
     "@mantine/core": "7.11.1",
+    "@mantine/form": "^7.11.1",
     "@mantine/hooks": "7.11.1",
+    "@mantine/modals": "^7.11.1",
+    "@mantine/notifications": "^7.11.1",
+    "@mantinex/dev-icons": "^1.0.2",
+    "@mantinex/mantine-logo": "^1.0.1",
+    "@tabler/icons-react": "^3.9.0",
+    "@tanstack/react-query": "^5.50.1",
+    "axios": "^1.7.2",
+    "ethers": "5.7.0",
     "next": "14.2.4",
+    "orval": "^6.31.0",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "viem": "^2.17.2",
+    "view": "^1.1.1",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/node": "20.14.8",
