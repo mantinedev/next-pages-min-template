@@ -110,7 +110,7 @@ export function TableReviews({services, isLoading, refetchParent}) {
           <TextInput
             withAsterisk
             label="Nevermined deployment tag"
-            placeholder="nevermined_tag"
+            placeholder="did:nv:b85024..."
             {...form.getInputProps('tag')}
           />
           <Group position="right" mt="lg">

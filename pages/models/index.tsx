@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Table, Container, Title, Text, Divider, Button, Tabs, rem, Group, Select } from '@mantine/core';
+import { Card, Table, Container, Title, Text, Divider, Button, Tabs, rem, Group, Select, Grid } from '@mantine/core';
 import { TableReviews } from '../../lib/TableReviewsModel/TableReviews';
 import { IconUpload } from '@tabler/icons-react';
 import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
@@ -46,7 +46,7 @@ const Problems: React.FC = () => {
     }
 
     return (
-        <Container id='abc' style={{width: '100%'}} p='md'>
+        <Container id='abc' style={{width: '100%'}} p='md' mb={10}>
                 <Card shadow="sm" padding="md" radius="xl" withBorder style={{backgroundColor: '#2e2e2eDD'}}>
             <Title mt='md'  order={1} style={{fontWeight: 900, textAlign: 'center', display: 'flex', justifyContent: 'center', fontSize: '2.5rem'}}>
             <Text
@@ -89,7 +89,15 @@ const Problems: React.FC = () => {
                 </Tabs.Panel>
 
                 <Tabs.Panel value="buy">
-                    Messages tab content
+                    <Grid>
+                        {modelsData && modelsData.length > 0? modelsData?.filter((model) => model.nevermind_tag).map((model) => {
+                            return (
+                                <Grid.Col span={12} mt='sm' mb='sm' style={{height: 237}}>
+                                    <div style={{display: 'flex', justifyContent: 'center'}} className="nvm-agent-widget" nvm-did={model.nevermind_tag} nvm-wid="wid-eb0c3740-bcbb-410e-885a-ea0a1e2c785e" nvm-cta-text="Start using" nvm-cta-bg-color="#e7515a" nvm-theme="dark" nvm-layout="horizontal"></div>
+                                </Grid.Col>
+                            )
+                        }) : 'No models found'}
+                    </Grid>
                 </Tabs.Panel>
                 </Tabs>
 
