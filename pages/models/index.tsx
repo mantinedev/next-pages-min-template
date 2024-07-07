@@ -8,6 +8,17 @@ import { AddModel } from '../../components/AddModel';
 import { useApiTypesList } from '../../api/endpoints/api/api';
 import { useApiProblemsList } from '../../api/endpoints/api/api';
 import { useApiAimodelsList } from '../../api/endpoints/api/api';
+import { all } from 'axios';
+
+let empty_problem = {
+    id: 0,
+    name: 'All problems'
+};
+
+let empty_type = {
+    id: 0,
+    name: 'All types'
+};
 
 const Problems: React.FC = () => {
     const problems = [
@@ -25,6 +36,14 @@ const Problems: React.FC = () => {
         type: parseInt(selectedType.value) ? parseInt(selectedType.value) :  undefined, 
         problem: parseInt(selectedProblem.value)? parseInt(selectedProblem.value) : undefined
     });
+
+    let allTypes = typesData
+    let allProblems = problemsData
+
+    if ((selectedType.value !== '0' || selectedProblem.value !== '0') &&  typesData && problemsData && typesData?.length > 0 && problemsData?.length > 0) {
+    allTypes = [{id: 0, name: 'All types'}, ...typesData];
+    allProblems = [{id: 0, name: 'All problems'}, ...problemsData];
+    }
 
     return (
         <Container id='abc' style={{width: '100%'}} p='md'>
@@ -53,13 +72,13 @@ const Problems: React.FC = () => {
                 <Group mt={15} grow justify='space-between'>
                 <Select 
                         placeholder='All problems'
-                        data={problemsData?.map((problem) => ({value: problem.id.toString(), label: problem.name}))}
+                        data={allProblems?.map((problem) => ({value: problem.id.toString(), label: problem.name}))}
                         value={selectedProblem ? selectedProblem.value : null}
                         onChange={(_value, option) => setSelectedProblem(option)}
                         ></Select>
                         <Select
                         placeholder='All types'
-                        data={typesData?.map((type) => ({value: type.id.toString(), label: type.name}))}
+                        data={allTypes?.map((type) => ({value: type.id.toString(), label: type.name}))}
                         value={selectedType ? selectedType.value : null}
                         onChange={(_value, option) => setSelectedType(option)}
                         ></Select>
