@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mantine/core": "7.11.2",
-    "@mantine/hooks": "7.11.2",
+    "@mantine/core": "^7.11.2",
+    "@mantine/dates": "^7.11.2",
+    "@mantine/hooks": "^7.11.2",
+    "@mantine/modals": "^7.11.2",
+    "@mantine/notifications": "^7.11.2",
+    "@mantine/notifications\n\n\n": "^7.11.2",
     "next": "14.2.4",
+    "next-auth": "^4.24.7",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
@@ -25,6 +30,5 @@
     "postcss-preset-mantine": "1.17.0",
     "postcss-simple-vars": "^7.0.1",
     "typescript": "5.5.2"
-  },
-  "packageManager": "yarn@4.3.1"
+  }
 }
