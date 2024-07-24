@@ -15,6 +15,7 @@
     "@mantine/modals": "^7.11.2",
     "@mantine/notifications": "^7.11.2",
     "@mantine/notifications\n\n\n": "^7.11.2",
+    "@serwist/next": "^9.0.5",
     "next": "14.2.4",
     "next-auth": "^4.24.7",
     "react": "18.3.1",
@@ -29,6 +30,7 @@
     "postcss": "^8.4.38",
     "postcss-preset-mantine": "1.17.0",
     "postcss-simple-vars": "^7.0.1",
+    "serwist": "^9.0.5",
     "typescript": "5.5.2"
   }
 }

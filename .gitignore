@@ -129,4 +129,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# MAC
 .DS_Store
+
+# Serwist
+public/sw*
+public/swe-worker*
