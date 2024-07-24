@@ -2,4 +2,10 @@
 
 Get started with the template by clicking `Use this template` button on the top of the page.
 
-[Documentation](https://mantine.dev/guides/next/)
+Includes the following
+* Mantine UI with Aarsleff theme
+* Mantine Notifications
+* Mantine Modals Manager
+* Mantine Date
+* Next-Auth with Azure Entra SSO
+
