@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+.yarn/
+
+# Build output
+.next/
+out/
+build/
+coverage/
+
+# Local tooling and caches
+.playwright-cli/
+output/
+*.tsbuildinfo
+
+# Environment and deployment
+.env*
+.env.sentry-build-plugin
+.vercel/
+
+# Generated service worker files
+public/sw.js
+public/sw.js.map
+public/swe-worker-*.js
+public/swe-worker-*.js.map
+
+# Misc
+.DS_Store
+next-env.d.ts

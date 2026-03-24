@@ -14,12 +14,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": [
-      "@serwist/next/typings"
-    ],
+    "types": ["@serwist/next/typings"],
     "paths": {
       "@/*": ["./*"]
-    },
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

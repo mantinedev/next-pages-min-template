@@ -6,18 +6,15 @@ import {
   IconLock,
   IconNotes,
   IconUser,
-} from "@tabler/icons-react";
-import { ScrollArea } from "@mantine/core";
-import { useAuth, useUser } from "@clerk/nextjs";
-import {
-  LinksGroup,
-  type LinksGroupProps,
-} from "./NavbarLinksGroup/NavbarLinksGroup";
-import { UserButton } from "./UserButton/UserButton";
-import classes from "./SideNav.module.css";
-import HelpModal from "../HelpModal/HelpModal";
-import { useDisclosure } from "@mantine/hooks";
-import FeedbackButton from "../FeedbackButton/FeedbackButton";
+} from '@tabler/icons-react';
+import { ScrollArea } from '@mantine/core';
+import { useAuth, useUser } from '@clerk/nextjs';
+import { LinksGroup, type LinksGroupProps } from './NavbarLinksGroup/NavbarLinksGroup';
+import { UserButton } from './UserButton/UserButton';
+import classes from './SideNav.module.css';
+import HelpModal from '../HelpModal/HelpModal';
+import { useDisclosure } from '@mantine/hooks';
+import FeedbackButton from '../FeedbackButton/FeedbackButton';
 
 export const createLinkData = (
   email?: string | null,
@@ -25,84 +22,84 @@ export const createLinkData = (
   userAdmin?: boolean | null,
   onHelpClick?: () => void,
 ): LinksGroupProps[] => {
-  const briefingLink = email?.includes("centrumpile.co.uk")
-    ? "/forms/BriefingRegisterCentrum"
-    : "/forms/BriefingRegister";
+  const briefingLink = email?.includes('centrumpile.co.uk')
+    ? '/forms/BriefingRegisterCentrum'
+    : '/forms/BriefingRegister';
 
   const timesheetName = () => {
-    switch (email?.split("@")?.[1]) {
-      case "cannonpiling.com":
-        return "Cannon Timesheet";
+    switch (email?.split('@')?.[1]) {
+      case 'cannonpiling.com':
+        return 'Cannon Timesheet';
       default:
-        return "AarTime";
+        return 'AarTime';
     }
   };
 
   const timesheetLink = () => {
-    switch (email?.split("@")?.[1]) {
-      case "cannonpiling.com":
-        return "https://timesheet.cannonpiling.com/";
+    switch (email?.split('@')?.[1]) {
+      case 'cannonpiling.com':
+        return 'https://timesheet.cannonpiling.com/';
       default:
-        return "https://aartime.aarsleff.co.uk";
+        return 'https://aartime.aarsleff.co.uk';
     }
   };
 
   const links: LinksGroupProps[] = [
-    { label: "Home", icon: IconHome, link: "/" },
+    { label: 'Home', icon: IconHome, link: '/' },
     {
-      label: "Forms",
+      label: 'Forms',
       icon: IconNotes,
       forceOpen: true,
       links: [
-        { label: "Goods Received", link: "/forms/egr" },
-        { label: "Briefing Register", link: briefingLink },
-        { label: "Goods Returned", link: "/forms/GoodsReturned" },
-        { label: "Site Paperwork", link: "/forms/SitePaperwork" },
-        { label: "Vehicle Checks", link: "/forms/VehicleChecks" },
+        { label: 'Goods Received', link: '/forms/egr' },
+        { label: 'Briefing Register', link: briefingLink },
+        { label: 'Goods Returned', link: '/forms/GoodsReturned' },
+        { label: 'Site Paperwork', link: '/forms/SitePaperwork' },
+        { label: 'Vehicle Checks', link: '/forms/VehicleChecks' },
       ],
     },
-    { label: "Data", icon: IconDatabase, link: "/data" },
+    { label: 'Data', icon: IconDatabase, link: '/data' },
   ];
 
   if (admin) {
     links.push({
-      label: "Admin",
+      label: 'Admin',
       icon: IconLock,
       forceOpen: false,
       links: [
-        { label: "Vehicle Users", link: "/vehicle-users" },
-        { label: "Export", link: "/export" },
-        { label: "Stats", link: "/stats" },
+        { label: 'Vehicle Users', link: '/vehicle-users' },
+        { label: 'Export', link: '/export' },
+        { label: 'Stats', link: '/stats' },
       ],
     });
   }
 
   if (userAdmin) {
-    links.push({ label: "Users", icon: IconUser, link: "/users" });
+    links.push({ label: 'Users', icon: IconUser, link: '/users' });
   }
 
   links.push(
     {
-      label: "Other Apps",
+      label: 'Other Apps',
       icon: IconApps,
       links: [
         { label: timesheetName(), link: timesheetLink() },
         {
-          label: "AarCompliance",
-          link: "https://aarcompliance.aarsleff.co.uk",
+          label: 'AarCompliance',
+          link: 'https://aarcompliance.aarsleff.co.uk',
         },
-        { label: "AarAudit", link: "https://aaraudit.aarsleff.co.uk" },
+        { label: 'AarAudit', link: 'https://aaraudit.aarsleff.co.uk' },
         {
-          label: "SRW Production",
-          link: "https://aar-production-srw.vercel.app",
+          label: 'SRW Production',
+          link: 'https://aar-production-srw.vercel.app',
         },
         {
-          label: "AarForms",
-          link: "https://aarforms.aarsleff.co.uk",
+          label: 'AarForms',
+          link: 'https://aarforms.aarsleff.co.uk',
         },
       ],
     },
-    { label: "Help", icon: IconHelp, onClick: onHelpClick },
+    { label: 'Help', icon: IconHelp, onClick: onHelpClick },
   );
 
   return links;
@@ -118,9 +115,7 @@ export default function SideNav() {
     sessionClaims?.metadata?.user_admin,
     open,
   );
-  const links = linkData.map((item) => (
-    <LinksGroup {...item} key={item.label} />
-  ));
+  const links = linkData.map((item) => <LinksGroup {...item} key={item.label} />);
 
   return (
     <nav className={classes.navbar}>

@@ -1,6 +1,6 @@
 .navHeader {
   @mixin dark {
-    background: linear-gradient(to right, #2E2E2E 20%, #005fae 70%);
+    background: linear-gradient(to right, #2e2e2e 20%, #005fae 70%);
   }
   @mixin light {
     background: linear-gradient(to right, #ffffffff 20%, #005fae 70%);

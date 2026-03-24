@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 // import * as Sentry from "@sentry/nextjs";
-import { IconSpeakerphone } from "@tabler/icons-react";
-import { LinksGroup } from "../SideNav/NavbarLinksGroup/NavbarLinksGroup";
+import { IconSpeakerphone } from '@tabler/icons-react';
+import { LinksGroup } from '../SideNav/NavbarLinksGroup/NavbarLinksGroup';
 
 export default function FeedbackButton() {
   const [feedback, setFeedback] = useState<any | undefined>(undefined);
@@ -15,16 +15,16 @@ export default function FeedbackButton() {
   useEffect(() => {
     if (feedback && buttonRef.current) {
       const unsubscribe = feedback.attachTo(buttonRef.current, {
-        colorScheme: "system",
+        colorScheme: 'system',
         showBranding: false,
         isEmailRequired: false,
         isNameRequired: true,
         useSentryUser: {
-          name: "name",
-          email: "email",
+          name: 'name',
+          email: 'email',
         },
-        formTitle: "Send us your feedback",
-        submitButtonLabel: "Submit",
+        formTitle: 'Send us your feedback',
+        submitButtonLabel: 'Submit',
         messagePlaceholder: "What's the bug? What would make this better?",
       });
       return unsubscribe;
@@ -32,7 +32,5 @@ export default function FeedbackButton() {
     return () => {};
   }, [feedback]);
 
-  return (
-    <LinksGroup icon={IconSpeakerphone} label={"Feedback"} ref={buttonRef} />
-  );
+  return <LinksGroup icon={IconSpeakerphone} label={'Feedback'} ref={buttonRef} />;
 }

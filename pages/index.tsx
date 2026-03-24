@@ -1,5 +1,5 @@
-import Nav from "@/components/Nav/Nav";
-import { Button, Group } from "@mantine/core";
+import Nav from '@/components/Nav/Nav';
+import { Button, Group } from '@mantine/core';
 
 export default function IndexPage() {
   return (

@@ -1,36 +1,36 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 // import * as Sentry from "@sentry/nextjs";
-import type { UserResource } from "@clerk/types";
+import type { UserResource } from '@clerk/types';
 
 function toError(error: unknown) {
   if (error instanceof Error) {
     return error;
   }
 
-  if (typeof error === "string") {
+  if (typeof error === 'string') {
     return new Error(error);
   }
 
   try {
     return new Error(JSON.stringify(error));
   } catch {
-    return new Error("Unknown error updating user metadata");
+    return new Error('Unknown error updating user metadata');
   }
 }
 
-const LAST_METADATA_UPDATE_KEY = "nav:lastMetadataUpdate";
-const METADATA_UPDATE_LOCK_KEY = "nav:metadataUpdateLock";
+const LAST_METADATA_UPDATE_KEY = 'nav:lastMetadataUpdate';
+const METADATA_UPDATE_LOCK_KEY = 'nav:metadataUpdateLock';
 const THROTTLE_INTERVAL_MS = 60 * 1000;
 const SESSION_UPDATE_WINDOW_MS = 15 * 1000;
 const METADATA_UPDATE_TIMEOUT_MS = 10 * 1000;
 
 function buildMetadataEndpoint(email: string) {
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return `/api/updateUserMetadata?user=${encodeURIComponent(email)}`;
   }
 
-  const url = new URL("/api/updateUserMetadata", window.location.origin);
-  url.searchParams.set("user", email);
+  const url = new URL('/api/updateUserMetadata', window.location.origin);
+  url.searchParams.set('user', email);
   return url.toString();
 }
 
@@ -43,26 +43,25 @@ export async function updateUserMetadata(user: UserResource | null | undefined) 
   let abortController: AbortController | null = null;
 
   try {
-    if (typeof navigator !== "undefined" && navigator.onLine === false) {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
       // Skip network work entirely when the browser knows it is offline.
       return;
     }
 
     const email = user.primaryEmailAddress.emailAddress;
     const endpoint = buildMetadataEndpoint(email);
-    abortController =
-      typeof AbortController !== "undefined" ? new AbortController() : null;
+    abortController = typeof AbortController !== 'undefined' ? new AbortController() : null;
     timeoutId =
-      typeof window !== "undefined"
+      typeof window !== 'undefined'
         ? window.setTimeout(
-            () => abortController?.abort("metadata_update_timeout"),
-            METADATA_UPDATE_TIMEOUT_MS
+            () => abortController?.abort('metadata_update_timeout'),
+            METADATA_UPDATE_TIMEOUT_MS,
           )
         : null;
 
     const response = await fetch(endpoint, {
-      cache: "no-store",
-      credentials: "same-origin",
+      cache: 'no-store',
+      credentials: 'same-origin',
       signal: abortController?.signal,
     });
 
@@ -72,16 +71,16 @@ export async function updateUserMetadata(user: UserResource | null | undefined) 
 
     if (!response.ok) {
       const error = new Error(
-        `Failed to update user metadata: ${response.status} ${response.statusText}`
+        `Failed to update user metadata: ${response.status} ${response.statusText}`,
       );
       // Sentry.captureException(error);
       console.error(error);
       return;
     }
 
-    const contentType = response.headers.get("content-type") || "";
+    const contentType = response.headers.get('content-type') || '';
 
-    if (!contentType.startsWith("image/")) {
+    if (!contentType.startsWith('image/')) {
       return;
     }
 
@@ -97,18 +96,15 @@ export async function updateUserMetadata(user: UserResource | null | undefined) 
 
     // Network interruptions, aborts, and offline scenarios are expected and
     // shouldn't be reported as actionable errors.
-    if (
-      normalisedError.name === "AbortError" ||
-      normalisedError.message === "Failed to fetch"
-    ) {
+    if (normalisedError.name === 'AbortError' || normalisedError.message === 'Failed to fetch') {
       return;
     }
 
-    normalisedError.name = "UserMetadataUpdateError";
+    normalisedError.name = 'UserMetadataUpdateError';
     // Sentry.captureException(normalisedError);
     console.error(normalisedError);
   } finally {
-    if (timeoutId !== null && typeof window !== "undefined") {
+    if (timeoutId !== null && typeof window !== 'undefined') {
       window.clearTimeout(timeoutId);
     }
   }
@@ -130,7 +126,7 @@ export function useThrottledUserMetadataUpdate({
       return;
     }
 
-    if (typeof window === "undefined") {
+    if (typeof window === 'undefined') {
       return;
     }
 
@@ -148,9 +144,7 @@ export function useThrottledUserMetadataUpdate({
       return;
     }
 
-    const sessionUpdatedAtTime = sessionUpdatedAt
-      ? new Date(sessionUpdatedAt).getTime()
-      : 0;
+    const sessionUpdatedAtTime = sessionUpdatedAt ? new Date(sessionUpdatedAt).getTime() : 0;
 
     if (!sessionUpdatedAtTime) {
       return;
@@ -163,12 +157,8 @@ export function useThrottledUserMetadataUpdate({
       return;
     }
 
-    const rawLastUpdate = Number(
-      sessionStorage.getItem(LAST_METADATA_UPDATE_KEY) ?? "0"
-    );
-    const rawActiveLock = Number(
-      sessionStorage.getItem(METADATA_UPDATE_LOCK_KEY) ?? "0"
-    );
+    const rawLastUpdate = Number(sessionStorage.getItem(LAST_METADATA_UPDATE_KEY) ?? '0');
+    const rawActiveLock = Number(sessionStorage.getItem(METADATA_UPDATE_LOCK_KEY) ?? '0');
     const lastUpdate = Number.isFinite(rawLastUpdate) ? rawLastUpdate : 0;
     const activeLock = Number.isFinite(rawActiveLock) ? rawActiveLock : 0;
 

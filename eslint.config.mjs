@@ -1,7 +1,7 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import js from '@eslint/js';
+import { FlatCompat } from '@eslint/eslintrc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,19 +13,19 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+    ignores: ['**/*.js', '**/*.cjs', '**/*.mjs'],
   },
-  ...compat.extends("next/core-web-vitals", "prettier"),
+  ...compat.extends('next/core-web-vitals', 'prettier'),
   {
     rules: {
-      "no-console": [
-        "error",
+      'no-console': [
+        'error',
         {
-          allow: ["warn", "error"],
+          allow: ['warn', 'error'],
         },
       ],
 
-      "no-unused-vars": "error",
+      'no-unused-vars': 'error',
     },
   },
 ];

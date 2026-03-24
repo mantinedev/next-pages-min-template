@@ -1,17 +1,17 @@
-import { AppShell, Group, Burger, Text } from "@mantine/core";
-import { useDisclosure, useViewportSize } from "@mantine/hooks";
-import classes from "./Nav.module.css";
-import SideNav from "./SideNav/SideNav";
-import { createLinkData } from "./SideNav/SideNav";
+import { AppShell, Group, Burger, Text } from '@mantine/core';
+import { useDisclosure, useViewportSize } from '@mantine/hooks';
+import classes from './Nav.module.css';
+import SideNav from './SideNav/SideNav';
+import { createLinkData } from './SideNav/SideNav';
 // import * as Sentry from "@sentry/nextjs";
-import cx from "clsx";
+import cx from 'clsx';
 
-import confetti from "canvas-confetti";
-import { useAuth, useSession, useUser } from "@clerk/nextjs";
-import { useMemo } from "react";
-import { useRouter } from "next/router";
-import { IconTestPipe } from "@tabler/icons-react";
-import { useThrottledUserMetadataUpdate } from "@/lib/updateUserMetadata";
+import confetti from 'canvas-confetti';
+import { useAuth, useSession, useUser } from '@clerk/nextjs';
+import { useMemo } from 'react';
+import { useRouter } from 'next/router';
+import { IconTestPipe } from '@tabler/icons-react';
+import { useThrottledUserMetadataUpdate } from '@/lib/updateUserMetadata';
 
 type NavigationItem = {
   label: string;
@@ -20,8 +20,8 @@ type NavigationItem = {
 };
 
 const normalizePath = (path: string) => {
-  const stripped = (path || "").split("#")[0].split("?")[0].replace(/\/+$/, "");
-  return stripped === "" ? "/" : stripped;
+  const stripped = (path || '').split('#')[0].split('?')[0].replace(/\/+$/, '');
+  return stripped === '' ? '/' : stripped;
 };
 
 const buildLinkLabelMap = (items: NavigationItem[]) => {
@@ -49,12 +49,12 @@ const resolvePageTitle = (path: string, labelMap: Map<string, string>) => {
     return directMatch;
   }
 
-  let bestLabel = "";
+  let bestLabel = '';
   let bestMatchLength = 0;
 
   labelMap.forEach((label, linkPath) => {
     if (
-      linkPath !== "/" &&
+      linkPath !== '/' &&
       normalizedPath.startsWith(linkPath) &&
       linkPath.length > bestMatchLength
     ) {
@@ -67,15 +67,15 @@ const resolvePageTitle = (path: string, labelMap: Map<string, string>) => {
     return bestLabel;
   }
 
-  if (normalizedPath === "/") {
-    return "Home";
+  if (normalizedPath === '/') {
+    return 'Home';
   }
 
   return normalizedPath
-    .split("/")
+    .split('/')
     .filter(Boolean)
     .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
-    .join(" ");
+    .join(' ');
 };
 
 export default function Nav({ children }: { children: React.ReactNode }) {
@@ -136,24 +136,13 @@ export default function Nav({ children }: { children: React.ReactNode }) {
         <Group h="100%" px="md">
           <Group justify="space-between" style={{ flex: 1 }}>
             <Group gap="xl">
-              {width! < 1024 && (
-                <Burger
-                  opened={opened}
-                  onClick={toggle}
-                  size="sm"
-                />
-              )}
+              {width! < 1024 && <Burger opened={opened} onClick={toggle} size="sm" />}
               <Text ta="left" fw={500}>
                 {pageTitle}
               </Text>
             </Group>
             <Group gap="sm">
-              <IconTestPipe
-                width={32}
-                height={32}
-                color="#ffffff"
-                onClick={fireConfetti}
-              />
+              <IconTestPipe width={32} height={32} color="#ffffff" onClick={fireConfetti} />
               <Text ta="left" fw={500} c="white">
                 AarTemplate
               </Text>

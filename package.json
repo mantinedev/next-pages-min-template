@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "npx next typegen && next lint"
+    "lint": "npx next typegen && next lint",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.36.5",

@@ -1,12 +1,12 @@
-import { Button, Card, Container, Group, Image, Text } from "@mantine/core";
-import { SignInButton } from "@clerk/nextjs";
-import { useRouter } from "next/router";
+import { Button, Card, Container, Group, Image, Text } from '@mantine/core';
+import { SignInButton } from '@clerk/nextjs';
+import { useRouter } from 'next/router';
 
 export default function Login() {
   const { query } = useRouter();
   const redirectUrlParam = query.redirect_url;
   const redirectUrl =
-    typeof redirectUrlParam === "string"
+    typeof redirectUrlParam === 'string'
       ? redirectUrlParam
       : Array.isArray(redirectUrlParam)
         ? redirectUrlParam[0]
@@ -31,8 +31,7 @@ export default function Login() {
           </Group>
 
           <Text size="sm" c="dimmed">
-            AarTemplate is only accesable to authenticated users. Please sign in to
-            view your forms.
+            AarTemplate is only accesable to authenticated users. Please sign in to view your forms.
           </Text>
 
           <SignInButton mode="modal" forceRedirectUrl={redirectUrl}>
@@ -40,13 +39,7 @@ export default function Login() {
               Sign In
             </Button>
           </SignInButton>
-          <Text
-            mt={20}
-            c="dimmed"
-            size="xs"
-            component="a"
-            href="https://storyset.com/online"
-          >
+          <Text mt={20} c="dimmed" size="xs" component="a" href="https://storyset.com/online">
             Online illustrations by Storyset
           </Text>
         </Card>
