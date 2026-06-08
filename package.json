@@ -22,7 +22,7 @@
     "@types/react": "18",
     "canvas-confetti": "^1.9.3",
     "dayjs": "^1.11.13",
-    "next": "15.5.3",
+    "next": "15.5.18",
     "react": "19.1.4",
     "react-dom": "19.1.4"
   },
