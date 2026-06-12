@@ -11,7 +11,7 @@
     "format:check": "prettier . --check"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.36.5",
+    "@clerk/nextjs": "^7.4.2",
     "@mantine/core": "8.3.10",
     "@mantine/dates": "8.3.10",
     "@mantine/hooks": "8.3.10",

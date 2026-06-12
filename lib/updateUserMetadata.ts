@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 // import * as Sentry from "@sentry/nextjs";
-import type { UserResource } from '@clerk/types';
+import type { UserResource } from "@clerk/shared/types";
 
 function toError(error: unknown) {
   if (error instanceof Error) {
