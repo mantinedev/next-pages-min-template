@@ -1,0 +1,86 @@
+---
+title: Writing Docs
+description: How to add and update pages in this documentation system
+---
+
+This app uses [Fumadocs](https://fumadocs.vercel.app) to power its documentation. Pages are written in MDX (Markdown with optional React components) and live in the `docs/` folder at the root of the repo. Fumadocs handles the sidebar, table of contents, and page layout automatically.
+
+For advanced usage — callouts, tabs, cards, and more — see the [Fumadocs component docs](https://fumadocs.vercel.app/docs/ui/components).
+
+## Adding a page
+
+1. Create a new `.mdx` file in the `docs/` folder, e.g. `docs/my-page.mdx`.
+2. Add a frontmatter block at the top:
+
+```mdx
+---
+title: My Page
+description: A short description shown under the title
+---
+
+Page content goes here.
+```
+
+3. Register the page in `docs/meta.json` so it appears in the sidebar:
+
+```json
+{
+  "title": "AarTemplate Docs",
+  "pages": ["index", "writing-docs", "my-page"]
+}
+```
+
+The order of `pages` controls the sidebar order.
+
+## Organising into sections
+
+You can group pages into collapsible sections using a nested `meta.json` structure:
+
+```json
+{
+  "title": "AarTemplate Docs",
+  "pages": [
+    "index",
+    {
+      "type": "folder",
+      "title": "Guides",
+      "pages": ["writing-docs", "my-page"]
+    }
+  ]
+}
+```
+
+## Writing content
+
+Standard Markdown works as expected — headings, lists, bold, code blocks, tables, and links. A few things worth knowing:
+
+**Code blocks** — add a language identifier for syntax highlighting:
+
+````mdx
+```tsx
+export default function Example() {
+  return <p>Hello</p>;
+}
+```
+````
+
+**Links between pages** — use the `/docs/` prefix:
+
+```mdx
+See [Writing Docs](/docs/writing-docs) for more detail.
+```
+
+**Tables** — useful for reference content:
+
+```mdx
+| Column A | Column B |
+|---|---|
+| Value 1  | Value 2  |
+```
+
+## Frontmatter fields
+
+| Field | Required | Description |
+|---|---|---|
+| `title` | Yes | Page title shown in the header and sidebar |
+| `description` | No | Short subtitle shown under the title |

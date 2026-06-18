@@ -1,6 +1,44 @@
 ---
 title: Introduction
-description: Overview of AarTemplate
+description: Welcome to the AarTemplate docs
 ---
 
-Welcome to the AarTemplate documentation.
+## What is this?
+
+This template is the starting point for Aarsleff internal Next.js applications. It gives you authentication, a consistent UI, and an in-app documentation system out of the box.
+
+## Getting started
+
+### 1. Use this template
+
+Click **Use this template** on the GitHub repo page to create a new repository from it.
+
+### 2. Add your environment variables
+
+Create a `.env.local` file at the root. You will need Clerk credentials from your Clerk dashboard:
+
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_...
+CLERK_SECRET_KEY=sk_...
+```
+
+### 3. Install and run
+
+```bash
+yarn install
+yarn dev
+```
+
+The app runs at `http://localhost:3000`.
+
+## UI components
+
+The app uses [Mantine](https://mantine.dev) for its UI. Mantine provides buttons, forms, modals, notifications, date pickers, and much more — all styled to the Aarsleff theme. The full component library is documented at [mantine.dev/components](https://mantine.dev/components/overview/).
+
+## Sign in
+
+Users sign in via Azure Entra SSO at `/sign-in`. No separate account creation is needed — just use your Aarsleff Microsoft account.
+
+## Docs
+
+The in-app documentation lives at `/docs`. Pages are written in MDX and built automatically. See [Writing Docs](/docs/writing-docs) to learn how to add or update pages.
