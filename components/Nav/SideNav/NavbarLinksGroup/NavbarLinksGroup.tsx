@@ -101,7 +101,7 @@ export const LinksGroup = forwardRef<HTMLButtonElement, LinksGroupProps>(functio
           )}
         </Group>
       </UnstyledButton>
-      {hasLinks ? <Collapse in={forceOpen ? true : opened}>{items}</Collapse> : null}
+      {hasLinks ? <Collapse expanded={forceOpen ? true : opened}>{items}</Collapse> : null}
     </>
   );
 });

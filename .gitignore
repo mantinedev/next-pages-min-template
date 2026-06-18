@@ -83,9 +83,10 @@ web_modules/
 .cache
 .parcel-cache
 
-# Next.js build output
-.next
-out
+# next.js
+/.next/
+/out/
+/.source/
 
 # Nuxt.js build / generate output
 .nuxt
@@ -135,5 +136,8 @@ dist
 # Serwist
 public/sw*
 public/swe-worker*
+
+# fumadocs-mdx generated
+.source
 
 next-env.d.ts

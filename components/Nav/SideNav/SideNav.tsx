@@ -12,15 +12,12 @@ import { useAuth, useUser } from '@clerk/nextjs';
 import { LinksGroup, type LinksGroupProps } from './NavbarLinksGroup/NavbarLinksGroup';
 import { UserButton } from './UserButton/UserButton';
 import classes from './SideNav.module.css';
-import HelpModal from '../HelpModal/HelpModal';
-import { useDisclosure } from '@mantine/hooks';
 import FeedbackButton from '../FeedbackButton/FeedbackButton';
 
 export const createLinkData = (
   email?: string | null,
   admin?: boolean | null,
   userAdmin?: boolean | null,
-  onHelpClick?: () => void,
 ): LinksGroupProps[] => {
   const briefingLink = email?.includes('centrumpile.co.uk')
     ? '/forms/BriefingRegisterCentrum'
@@ -99,7 +96,7 @@ export const createLinkData = (
         },
       ],
     },
-    { label: 'Help', icon: IconHelp, onClick: onHelpClick },
+    { label: 'Docs', icon: IconHelp, link: '/docs' },
   );
 
   return links;
@@ -108,12 +105,10 @@ export const createLinkData = (
 export default function SideNav() {
   const { user } = useUser();
   const { sessionClaims } = useAuth();
-  const [opened, { open, close }] = useDisclosure(false);
   const linkData = createLinkData(
     user?.primaryEmailAddress?.emailAddress,
     sessionClaims?.metadata?.admin,
     sessionClaims?.metadata?.user_admin,
-    open,
   );
   const links = linkData.map((item) => <LinksGroup {...item} key={item.label} />);
 
@@ -129,7 +124,6 @@ export default function SideNav() {
       <div className={classes.footer}>
         <UserButton />
       </div>
-      <HelpModal opened={opened} close={close} />
     </nav>
   );
 }
