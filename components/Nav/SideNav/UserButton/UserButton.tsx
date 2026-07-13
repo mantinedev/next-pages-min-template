@@ -68,7 +68,9 @@ export function UserButton() {
               </Text>
 
               <Text c="dimmed" size="xs">
-                {user.emailAddresses[0].emailAddress}
+                {user.emailAddresses[0].emailAddress.length > 25
+                  ? user.emailAddresses[0].emailAddress.slice(0, 22) + '...'
+                  : user.emailAddresses[0].emailAddress}
               </Text>
             </div>
 

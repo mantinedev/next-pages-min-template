@@ -8,7 +8,6 @@ import {
   IconUser,
 } from '@tabler/icons-react';
 import { ScrollArea } from '@mantine/core';
-import { useAuth, useUser } from '@clerk/nextjs';
 import { LinksGroup, type LinksGroupProps } from './NavbarLinksGroup/NavbarLinksGroup';
 import { UserButton } from './UserButton/UserButton';
 import classes from './SideNav.module.css';
@@ -102,14 +101,7 @@ export const createLinkData = (
   return links;
 };
 
-export default function SideNav() {
-  const { user } = useUser();
-  const { sessionClaims } = useAuth();
-  const linkData = createLinkData(
-    user?.primaryEmailAddress?.emailAddress,
-    sessionClaims?.metadata?.admin,
-    sessionClaims?.metadata?.user_admin,
-  );
+export default function SideNav({ linkData }: { linkData: LinksGroupProps[] }) {
   const links = linkData.map((item) => <LinksGroup {...item} key={item.label} />);
 
   return (

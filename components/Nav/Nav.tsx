@@ -151,7 +151,7 @@ export default function Nav({ children }: { children: React.ReactNode }) {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar>
-        <SideNav />
+        <SideNav linkData={linkData} />
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>
