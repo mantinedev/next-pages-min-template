@@ -2,6 +2,12 @@
   "name": "mantine-minimal-next-template",
   "version": "0.1.0",
   "private": true,
+  "resolutions": {
+    "shell-quote@npm:1.8.4": "1.9.0",
+    "js-yaml@npm:^4.1.1": "^4.3.0",
+    "brace-expansion@npm:^5.0.5": "^5.0.7",
+    "sharp@npm:^0.34.5": "^0.35.3"
+  },
   "scripts": {
     "dev": "concurrently -p none 'serwist build --watch' 'next dev'",
     "build": "fumadocs-mdx && next build && serwist build",
@@ -25,7 +31,7 @@
     "fumadocs-core": "15.8.5",
     "fumadocs-mdx": "14.2.13",
     "fumadocs-ui": "15.8.5",
-    "next": "16.2.8",
+    "next": "16.2.11",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -37,7 +43,7 @@
     "@types/react-dom": "^19.2.1",
     "concurrently": "^10.0.0",
     "eslint": "9.35.0",
-    "eslint-config-next": "16.2.8",
+    "eslint-config-next": "16.2.11",
     "eslint-config-prettier": "^9.1.0",
     "postcss": "^8.5.10",
     "postcss-preset-mantine": "1.18.0",
