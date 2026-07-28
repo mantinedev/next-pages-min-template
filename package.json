@@ -6,7 +6,8 @@
     "shell-quote@npm:1.8.4": "1.9.0",
     "js-yaml@npm:^4.1.1": "^4.3.0",
     "brace-expansion@npm:^5.0.5": "^5.0.7",
-    "sharp@npm:^0.34.5": "^0.35.3"
+    "sharp@npm:^0.34.5": "^0.35.3",
+    "postcss@npm:8.4.31": "^8.5.18"
   },
   "scripts": {
     "dev": "concurrently -p none 'serwist build --watch' 'next dev'",
