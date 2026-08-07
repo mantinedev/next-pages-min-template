@@ -5,9 +5,9 @@
   "resolutions": {
     "shell-quote@npm:1.8.4": "1.9.0",
     "js-yaml@npm:^4.1.1": "^4.3.0",
-    "brace-expansion@npm:^5.0.5": "^5.0.7",
+    "brace-expansion@npm:^5.0.7": "^5.0.9",
     "sharp@npm:^0.34.5": "^0.35.3",
-    "postcss@npm:8.4.31": "^8.5.18"
+    "postcss@npm:8.4.31": "^8.5.23"
   },
   "scripts": {
     "dev": "concurrently -p none 'serwist build --watch' 'next dev'",
@@ -46,7 +46,7 @@
     "eslint": "9.35.0",
     "eslint-config-next": "16.2.11",
     "eslint-config-prettier": "^9.1.0",
-    "postcss": "^8.5.18",
+    "postcss": "^8.5.23",
     "postcss-preset-mantine": "1.18.0",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.8.1",
