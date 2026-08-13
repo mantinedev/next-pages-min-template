@@ -2,7 +2,7 @@ import 'fumadocs-ui/style.css';
 import 'fumadocs-ui/css/ocean.css';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { RootProvider } from 'fumadocs-ui/provider';
+import { RootProvider } from 'fumadocs-ui/provider/next';
 
 export const metadata: Metadata = {
   title: {

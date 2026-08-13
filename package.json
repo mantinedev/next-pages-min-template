@@ -29,9 +29,9 @@
     "@types/react": "18",
     "canvas-confetti": "^1.9.3",
     "dayjs": "^1.11.13",
-    "fumadocs-core": "15.8.5",
-    "fumadocs-mdx": "14.2.13",
-    "fumadocs-ui": "15.8.5",
+    "fumadocs-core": "16.14.3",
+    "fumadocs-mdx": "15.2.3",
+    "fumadocs-ui": "16.14.3",
     "next": "16.2.11",
     "react": "19.2.4",
     "react-dom": "19.2.4"
