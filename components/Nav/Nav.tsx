@@ -7,11 +7,11 @@ import { createLinkData } from './SideNav/SideNav';
 import cx from 'clsx';
 
 import confetti from 'canvas-confetti';
-import { useAuth, useSession, useUser } from '@clerk/nextjs';
+import { useUser } from '@clerk/nextjs';
 import { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { IconTestPipe } from '@tabler/icons-react';
-import { useThrottledUserMetadataUpdate } from '@/lib/updateUserMetadata';
+import { useAppPermission } from '@/hooks/useAppPermission';
 
 type NavigationItem = {
   label: string;
@@ -82,17 +82,16 @@ export default function Nav({ children }: { children: React.ReactNode }) {
   const [opened, { toggle }] = useDisclosure();
   const { width } = useViewportSize();
   const { isLoaded, user } = useUser();
-  const { sessionClaims } = useAuth();
-  const { session } = useSession();
+  const template = useAppPermission('template');
   const router = useRouter();
   const linkData = useMemo(
     () =>
       createLinkData(
         user?.primaryEmailAddress?.emailAddress,
-        sessionClaims?.metadata?.admin,
-        sessionClaims?.metadata?.user_admin,
+        template?.admin,
+        template?.userAdmin,
       ),
-    [user?.primaryEmailAddress?.emailAddress, sessionClaims],
+    [user?.primaryEmailAddress?.emailAddress, template],
   );
   const labelMap = useMemo(() => buildLinkLabelMap(linkData), [linkData]);
   const pageTitle = useMemo(
@@ -114,13 +113,6 @@ export default function Nav({ children }: { children: React.ReactNode }) {
       origin: { y: 0.6 },
     });
   }
-
-  //update usermetadata
-  useThrottledUserMetadataUpdate({
-    isLoaded,
-    sessionUpdatedAt: session?.updatedAt,
-    user,
-  });
 
   return (
     <AppShell
