@@ -1,0 +1,79 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: var(--mantine-font-size-sm);
+  font-family: inherit;
+  cursor: pointer;
+  background: transparent;
+  color: var(--mantine-color-dimmed);
+  border: 1px dashed var(--mantine-color-default-border);
+}
+
+.pill:hover:not(:disabled) {
+  border-color: var(--mantine-color-gray-6);
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--mantine-color-blue-5);
+  outline-offset: 2px;
+}
+
+.pillOn {
+  background: var(--mantine-color-green-light);
+  color: var(--mantine-color-green-light-color);
+  border: 1px solid var(--mantine-color-green-6);
+}
+
+.pillLocked {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Arming previews the new state, then fades back over the confirm window. */
+.armOn {
+  animation: toOff 3s linear forwards;
+}
+
+.armOff {
+  animation: toOn 3s linear forwards;
+}
+
+@keyframes toOff {
+  from {
+    background: var(--mantine-color-green-light);
+    color: var(--mantine-color-green-light-color);
+    border: 1px solid var(--mantine-color-green-6);
+  }
+  to {
+    background: transparent;
+    color: var(--mantine-color-dimmed);
+    border: 1px dashed var(--mantine-color-default-border);
+  }
+}
+
+@keyframes toOn {
+  from {
+    background: transparent;
+    color: var(--mantine-color-dimmed);
+    border: 1px dashed var(--mantine-color-default-border);
+  }
+  to {
+    background: var(--mantine-color-green-light);
+    color: var(--mantine-color-green-light-color);
+    border: 1px solid var(--mantine-color-green-6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .armOn,
+  .armOff {
+    animation-duration: 0.01s;
+  }
+}
+
+.flash {
+  background: var(--mantine-color-blue-light);
+}
