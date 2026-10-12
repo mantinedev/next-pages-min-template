@@ -8,15 +8,18 @@ import {
 } from "@mantine/core";
 import classes from "./UserSettings.module.css";
 import { UseFormReturnType } from "@mantine/form";
-import { IusersForm } from "@/pages/users";
 import { KeyedMutator } from "swr";
 import UsersAutocomplete from "../UsersAutocomplete/UsersAutocomplete";
-import { TEMPLATE_PERMISSIONS } from "@/lib/permissions";
+import { TEMPLATE_PERMISSIONS, type TemplatePermissions } from "@/lib/permissions";
 
 const data = Object.entries(TEMPLATE_PERMISSIONS).map(([schema, item]) => ({
   ...item,
   schema,
 }));
+
+export interface IusersForm extends TemplatePermissions {
+  user: string | null;
+}
 
 interface Iprops {
   form: UseFormReturnType<IusersForm>;
