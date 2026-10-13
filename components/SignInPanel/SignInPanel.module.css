@@ -1,0 +1,107 @@
+/* Phone: brand fills the top, form is a bottom sheet in thumb reach.
+   Wide: split panel. Layout follows the container's width, not the device. */
+.page {
+  --aarsleff-blue: #006eb1;
+  container-type: inline-size;
+}
+
+.signIn {
+  --button-bg: var(--aarsleff-blue);
+  --button-hover: #005d96;
+}
+
+.link {
+  --button-color: var(--aarsleff-blue);
+}
+
+/* Styled by the queries below, so it must sit inside the container, not be it. */
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  background: var(--mantine-color-body);
+}
+
+.card {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 28px 24px 44px;
+  padding-top: calc(28px + env(safe-area-inset-top, 0px));
+  background: var(--aarsleff-blue);
+  color: #e8f1fb;
+}
+
+.org {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.name {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.form {
+  display: grid;
+  gap: var(--mantine-spacing-md);
+  align-content: start;
+  margin-top: -22px;
+  padding: 24px 20px;
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  border-radius: 22px 22px 0 0;
+  background: var(--mantine-color-body);
+}
+
+@container (min-width: 600px) {
+  .shell {
+    place-items: center;
+    padding: var(--mantine-spacing-xl);
+  }
+
+  .card {
+    width: 100%;
+    max-width: 800px;
+    min-height: 420px;
+    grid-template-rows: none;
+    grid-template-columns: 5fr 6fr;
+    overflow: hidden;
+    border-radius: var(--mantine-radius-lg);
+    border: 1px solid var(--mantine-color-default-border);
+    box-shadow: var(--mantine-shadow-xl);
+  }
+
+  .brand {
+    position: relative;
+    justify-content: center;
+    padding: 32px 28px;
+  }
+
+  .org {
+    position: absolute;
+    top: 32px;
+    left: 28px;
+  }
+
+  .name {
+    font-size: 34px;
+  }
+
+  .form {
+    margin: 0;
+    padding: 32px 28px;
+    align-content: center;
+    border-radius: 0;
+  }
+}
